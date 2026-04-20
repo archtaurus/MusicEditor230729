@@ -8,3 +8,13 @@
 这个程序的发布版本: https://zhangyh.itch.io/rhythmeditor
 
 一个实机演示视频: https://www.bilibili.com/video/BV1EX4y1779c
+
+## 编译
+
+系统 Windows10，工具 mingw-w64 + make 环境。确保系统 g++ 及 make 命令可用。
+
+```shell
+$ cd MusicEditor230729/MusicEditor230729
+$ make
+```
+
