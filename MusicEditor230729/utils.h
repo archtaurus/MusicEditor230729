@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "include.h"
 
 double constexpr PI = 3.1415926535;
@@ -18,7 +18,7 @@ double constexpr EU = 2.7182818284;
 #define frdv(x) frd(sz); (x).resize(sz); frds(&*(x).begin(), sz);
 #define fwtv(x) sz = (x).size(); fwt(sz); fwts(&*(x).begin(), sz);
 
-// ×¢Òâ insd ÊÇ¿ªÇø¼ä£¬clmp ±ÕÇø¼ä¡£
+// ×¢ï¿½ï¿½ insd ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ä£¬clmp ï¿½ï¿½ï¿½ï¿½ï¿½ä¡£
 template<class T>
 bool insd(T v, T a, T b) { return v >= a && v < b; }
 template<class T>
@@ -28,7 +28,7 @@ inline int mod(int a, int b) { return (a % b + b) % b; }
 inline double modf(double a, double b) { return fmod(fmod(a, b) + b, b); }
 inline double modp(double an) { return modf(an + PI, 2 * PI) - PI; }
 
-// ×¢Òâ [a, b] ÊÇ±ÕÇø¼ä£¬µ« sz ÊÇ¿ªµÄ¡£
+// ×¢ï¿½ï¿½ [a, b] ï¿½Ç±ï¿½ï¿½ï¿½ï¿½ä£¬ï¿½ï¿½ sz ï¿½Ç¿ï¿½ï¿½Ä¡ï¿½
 int drnd(int a, int b);
 int drnd(int sz);
 double frnd(double a, double b);

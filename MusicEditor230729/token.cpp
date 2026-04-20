@@ -1,4 +1,4 @@
-#include "token.h"
+ï»¿#include "token.h"
 
 token::token(wstring const& typ) : typ(typ) {}
 token::token(double num) : num(num) { typ = L"num"; }
@@ -20,7 +20,7 @@ wstring tw(token const& tk) {
 
 token get_tk_var_res(wstring const& in, int& id) {
 	wstring tmp = { in[id] }; bool ok = true;
-	// ÏÂÃæÕâĞĞÅĞ¶ÏµÄË³ĞòºÜÖØÒª£¬ok ²»ÄÜÒÆµ½ÓÒ±ß¡£
+	// ä¸‹é¢è¿™è¡Œåˆ¤æ–­çš„é¡ºåºå¾ˆé‡è¦ï¼Œok ä¸èƒ½ç§»åˆ°å³è¾¹ã€‚
 	while (ok && ++id != in.size()) {
 		auto c = in[id];
 		ok = iswalpha(c) || c == L'_' || iswdigit(c);
@@ -102,7 +102,7 @@ vector<token> deal_sgn(vector<token> const& in) {
 vector<token> tokenize(wstring const& in) {
 	int id = 0; vector<token> tmp;
 	while (id != in.size()) {
-		// ÄãÖ®Ç°ÔÚ tk Ç°Ãæ¼ÓÁË const &£¬Ç§Íò²»ÒªÔÚÕâÑùÁË¡£
+		// ä½ ä¹‹å‰åœ¨ tk å‰é¢åŠ äº† const &ï¼Œåƒä¸‡ä¸è¦åœ¨è¿™æ ·äº†ã€‚
 		auto tk = get_token(in, id);
 		bool blank =
 			tk.typ == L" " || tk.typ == L"\n";

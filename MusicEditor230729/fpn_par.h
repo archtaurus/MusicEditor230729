@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "button.h"
 #include "textbox.h"
 #include "dragbar.h"

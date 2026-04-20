@@ -1,4 +1,4 @@
-#include "par.h"
+﻿#include "par.h"
 
 param::param(wstring const& nm) : nm(nm) {}
 void param::save(FILE* f) {

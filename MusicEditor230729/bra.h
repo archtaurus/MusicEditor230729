@@ -1,9 +1,9 @@
-#pragma once
+ï»¿#pragma once
 #include "token.h"
 
 struct bra {
 	int typ = 0;
-	// 1 ´ú±í ()£¬2 ´ú±í {}, 3 ´ú±í []¡£
+	// 1 ï¿½ï¿½ï¿½ï¿½ ()ï¿½ï¿½2 ï¿½ï¿½ï¿½ï¿½ {}, 3 ï¿½ï¿½ï¿½ï¿½ []ï¿½ï¿½
 	token tk;
 	vector<bra> bras;
 };

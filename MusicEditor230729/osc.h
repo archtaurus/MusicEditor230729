@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "num.h"
 
 int constexpr WV_SIN = 0;

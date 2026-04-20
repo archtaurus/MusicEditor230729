@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "num.h"
 
 int constexpr FLT_LP = 0;
@@ -11,7 +11,7 @@ struct Var;
 struct Cur;
 struct Inst;
 struct Filter {
-	// Paull Kellett ÂË²¨Æ÷£¬ÎÒ»¹²»ÖªµÀ¾ßÌå³£ÊýµÄÑ¡È¡Ô­Òò¡£
+	// Paull Kellett ï¿½Ë²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Öªï¿½ï¿½ï¿½ï¿½ï¿½å³£ï¿½ï¿½ï¿½ï¿½Ñ¡È¡Ô­ï¿½ï¿½
 	int type = 0;
 	Num freq, resonance;
 	double buf0 = 0, buf1 = 0;

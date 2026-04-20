@@ -1,4 +1,4 @@
-#include "tile.h"
+﻿#include "tile.h"
 
 dcol dcol::from_str(wstring const& s) {
 	dcol c; int i = 0;
@@ -10,7 +10,7 @@ wstring tw(dcol c) {
 	return L"(" + tw(c.r) + L"," + tw(c.g) + L"," + tw(c.b) + L")";
 }
 void cover(dcol& bc, BYTE& ba, dcol fc, BYTE fa) {
-	// Ŀǰ�������Ƶ���ʽ��Ӧ���м򻯵Ŀռ䡣
+	// 目前还不会推导公式，应该有简化的空间。
 	if (fa == 0) { return; }
 	if (fa == 255) { bc = fc; ba = 255; return; }
 

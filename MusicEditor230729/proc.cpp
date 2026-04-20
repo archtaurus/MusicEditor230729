@@ -1,4 +1,4 @@
-#include "proc.h"
+﻿#include "proc.h"
 #include "bra.h"
 
 proc::proc(wstring const& typ) : typ(typ) {}
@@ -91,5 +91,6 @@ vector<proc> parsing_procs(vector<bra> const& in) {
 		} curly = b.typ == 2;
 	}
 	if (curly) { out.push_back(parsing_proc(cur)); }
-	else if (!cur.empty()) { return {}; } return out;
+	else if (!cur.empty()) { return {}; } 
+	return out;
 }

@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 #include "vptr.h"
 #include "bra.h"
 
 struct expr {
 	wstring typ = L"null";
-	// vec ºÍ access ÆäÊµ¶¼¿ÉÒÔ·Åµ½ call µÄ¿ò¼ÜÀï¡£
-	// µ«ÊÇÊµÏÖµÄÊ±ºòÎÒ»¹ÊÇÏ£Íû·Ö¿ªÀ´¡£
+	// vec ï¿½ï¿½ access ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ô·Åµï¿½ call ï¿½Ä¿ï¿½ï¿½ï¿½ï¡£
+	// ï¿½ï¿½ï¿½ï¿½Êµï¿½Öµï¿½Ê±ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½Ö¿ï¿½ï¿½ï¿½ï¿½ï¿½
 	// num, var, str, call, null, vec, access
 
 	double num = 0;

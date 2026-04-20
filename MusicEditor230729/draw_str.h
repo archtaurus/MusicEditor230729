@@ -1,14 +1,14 @@
-#pragma once
+ï»¿#pragma once
 #include "font.h"
 
 void draw_char(tile& dest, dbuf& ds, double dep,
 	dvec tl, drect vp_dest, tile const& src, dcol col);
-// w Îª 0 Ê±´ú±í²»»»ÐÐ¡£
+// w Îª 0 Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½
 void draw_str(tile& dest, dbuf& ds, double d, wstring const& s,
 	dcol col, font const& ft, dvec& tl_cur, int& x_cur, int w, drect vp);
 void draw_str(tile& dest, dbuf& ds, double d, wstring const& s,
 	dcol col, font const& ft, dvec tl, int w, drect vp);
 
 dvec str_wh(wstring const& s, font const& ft, int w, int* x_last = NULL);
-// Èç¹û²»Ïë¿¼ÂÇ¸ßµÄ»°£¬¾ÍÉèÖÃ p.y = 0¡£
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¿¼ï¿½Ç¸ßµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ p.y = 0ï¿½ï¿½
 int str_index_at_pos(wstring const& s, font const& ft, dvec p, int w);

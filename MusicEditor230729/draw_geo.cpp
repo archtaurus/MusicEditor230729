@@ -1,4 +1,4 @@
-#include "draw_geo.h"
+ï»¿#include "draw_geo.h"
 #include "draw_px_seg.h"
 
 void draw_rect_raw(tile& dest, dvec tl, int w, int h, drect vp, dcol col) {
@@ -31,7 +31,7 @@ void draw_rect_tsf(tile& dest, dbuf& ds, double dep,
 	vec2 ct, double w, double h, mat2 tsf, drect vp, dcol col) {
 	mat2 inv_tsf = tsf.inv();
 	vec2 hwh_tsf = tsf.abs() * vec2(w, h) / 2;
-	// Õâ¸ö 1 ÊÇ¾­Ñé¹«Ê½¡£ÎÒÃ»×öÑÏ¸ñÂÛÖ¤¡£
+	// è¿™ä¸ª 1 æ˜¯ç»éªŒå…¬å¼ã€‚æˆ‘æ²¡åšä¸¥æ ¼è®ºè¯ã€‚
 	int a = max(vp.left(), int(ct.x - hwh_tsf.x) - 1);
 	int b = min(vp.right(), int(ct.x + hwh_tsf.x) + 1);
 	int c = max(vp.top(), int(ct.y - hwh_tsf.y) - 1);
@@ -40,7 +40,7 @@ void draw_rect_tsf(tile& dest, dbuf& ds, double dep,
 
 	rep(i, a, b) rep(j, c, d) {
 		dvec d_pnt(i, j);
-		// ÏÂÃæÊ½×ÓµÄÕıÈ·ĞÔ´ÓÄæ±ä»»±È½ÏÈİÒ×¿´£¬Òª×¢ÒâËÄÔòÔËËãµÄÓÅÏÈ¼¶¡£
+		// ä¸‹é¢å¼å­çš„æ­£ç¡®æ€§ä»é€†å˜æ¢æ¯”è¾ƒå®¹æ˜“çœ‹ï¼Œè¦æ³¨æ„å››åˆ™è¿ç®—çš„ä¼˜å…ˆçº§ã€‚
 		vec2 u_pnt = vec2(0.5) +
 			inv_tsf * (vec2(d_pnt) - ct) / vec2(w, h);
 		if (insd(u_pnt, { 1, 1 })) {
@@ -76,7 +76,7 @@ void draw_px_segstrip(tile& dest, dbuf& ds, double d,
 	vector<dvec> const& ps, drect vp, dcol col) {
 	dvec p0 = ps.front();
 	for (auto p1 : ps) {
-		// ÕâÀï×î¿ªÊ¼»áÓĞÖØ¸´£¬µ«Ò²²»¹ÜÁË¡£
+		// è¿™é‡Œæœ€å¼€å§‹ä¼šæœ‰é‡å¤ï¼Œä½†ä¹Ÿä¸ç®¡äº†ã€‚
 		draw_px_seg(dest, ds, p0, p1, d, vp, col); p0 = p1;
 	}
 }

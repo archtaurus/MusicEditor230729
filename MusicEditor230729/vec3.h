@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "vec2.h"
 
 struct vec3;
@@ -90,7 +90,7 @@ struct mat3 {
 		};
 	}
 	static mat3 cross(vec3 v) {
-		// Ö¸µÄÊÇ u ±ä³É v ²æ»ý u¡£
+		// Ö¸ï¿½ï¿½ï¿½ï¿½ u ï¿½ï¿½ï¿½ v ï¿½ï¿½ï¿½ uï¿½ï¿½
 		mat3 m;
 		m.a01 = -v.z;  m.a02 = v.y;
 		m.a12 = -v.x;  m.a10 = v.z;
@@ -100,7 +100,7 @@ struct mat3 {
 		return mat3(b.x * a, b.y * a, b.z * a);
 	}
 	static mat3 rot(vec3 a, double theta) {
-		// ÕâÀï¼ÙÉèÁË a ÊÇµ¥Î»µÄ¡£
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ a ï¿½Çµï¿½Î»ï¿½Ä¡ï¿½
 		mat3 mz = tensor(a, a);
 		mat3 mx = mat3::id() - mz, my = cross(a);
 		return cos(theta) * mx + sin(theta) * my + mz;
@@ -189,7 +189,7 @@ struct cam {
 	drect vp;
 	vec3 p, look;
 	double scl = 0, r = 0;
-	// min_y ±ØÐëÎªÕýÊý£¬ÎªÁË·ÀÖ¹³ýÒÔ 0¡£
+	// min_y ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ë·ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½
 	double min_d = 0, max_d = 0;
 	double theta = 0, phi = 0, psi = 0;
 

@@ -1,4 +1,4 @@
-#include "panel.h"
+ï»¿#include "panel.h"
 #include "app.h"
 #include "control.h"
 #include "draw_comp.h"
@@ -14,7 +14,7 @@ Panel::Panel() {
 	c_frame = { 150, 150, 150 };
 	c_panel = { 0, 0, 0 };
 }
-// ²Ëµ¥°´Å¥µÄ¿í¶È: 150.
+// èœå•æŒ‰é’®çš„å®½åº¦: 150.
 Panel Panel::menu(App& app) {
 	Panel pn; pn.vp = scr.rect();
 	pn.w = 169; pn.h = app.h - 40;
@@ -85,9 +85,9 @@ void Panel::Update(App &app) {
 		c->tl.y = clmp(cy, min_y(), tl.y + tl_show_rel.y);
 	} else if (c) { c->tl.y = tl.y + tl_show_rel.y; }
 
-	// ÏÂÃæ Update Ë³ÐòÊÇÎªÁË·½±ã»æÖÆ£¬±¾À´Ó¦¸Ã¿Ø¼þÏÈ¸üÐÂ¸ß¶ÈµÄ¡£
-	// Õâ¸öÊÇÎªÁËËÙ¶ÈµÄÎþÉü£¬²»ÖªµÀÓÐÃ»ÓÐ±ØÒª¡£
-	// Ò»¸ö¿ÉÄÜµÄ¸Ä½ø·½Ê½£¬ÊÇ·ÖÀë Update ºÍ Render£¬ÏÖÔÚÎ´²ÉÓÃ¡£
+	// ä¸‹é¢ Update é¡ºåºæ˜¯ä¸ºäº†æ–¹ä¾¿ç»˜åˆ¶ï¼Œæœ¬æ¥åº”è¯¥æŽ§ä»¶å…ˆæ›´æ–°é«˜åº¦çš„ã€‚
+	// è¿™ä¸ªæ˜¯ä¸ºäº†é€Ÿåº¦çš„ç‰ºç‰²ï¼Œä¸çŸ¥é“æœ‰æ²¡æœ‰å¿…è¦ã€‚
+	// ä¸€ä¸ªå¯èƒ½çš„æ”¹è¿›æ–¹å¼ï¼Œæ˜¯åˆ†ç¦» Update å’Œ Renderï¼ŒçŽ°åœ¨æœªé‡‡ç”¨ã€‚
 	render(app);
 	if (c) { c->Update(app); }
 	if (use_sb) { sb->Update(app); }

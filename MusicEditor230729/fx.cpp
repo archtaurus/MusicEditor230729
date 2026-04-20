@@ -1,4 +1,4 @@
-#include "fx.h"
+﻿#include "fx.h"
 #include "cur.h"
 #include "var.h"
 #include "reverb.h"

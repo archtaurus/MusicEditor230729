@@ -1,14 +1,14 @@
-#include "draw_px_seg.h"
+ï»¿#include "draw_px_seg.h"
 
-// ºÃÏñÕâÀï¾­³£·¢ÉúÒç³öÎÊÌâ£¬²»ÖªÄÜ²»ÄÜ´¦ÀíÒ»ÏÂ¡£
-// °Ñ int »»³É long long ÁË£¬Ó¦¸Ã»áÓĞ°ïÖú¡£
+// å¥½åƒè¿™é‡Œç»å¸¸å‘ç”Ÿæº¢å‡ºé—®é¢˜ï¼Œä¸çŸ¥èƒ½ä¸èƒ½å¤„ç†ä¸€ä¸‹ã€‚
+// æŠŠ int æ¢æˆ long long äº†ï¼Œåº”è¯¥ä¼šæœ‰å¸®åŠ©ã€‚
 bool pre_draw_px_seg(dvec& pa, dvec& pb, drect vp) {
 	long long x0 = vp.left();
 	long long x1 = vp.right() - 1;
 	long long y0 = vp.top();
 	long long y1 = vp.bottom() - 1;
 
-	// ÏÂÃæ¼ÙÉèÁË²»»á·¢Éú³ıÒÔ 0 µÄÎÊÌâ¡£
+	// ä¸‹é¢å‡è®¾äº†ä¸ä¼šå‘ç”Ÿé™¤ä»¥ 0 çš„é—®é¢˜ã€‚
 #define TMP(a, b, x, y, bd, sym)\
 if (p##a.x sym bd) {\
 	p##a.y +=  (p##b.y - p##a.y) * (bd - p##a.x) / (p##b.x - p##a.x);\

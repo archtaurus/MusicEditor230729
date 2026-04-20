@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "font.h"
 #include "control.h"
 
@@ -31,7 +31,7 @@ struct Droplist : Control {
 	void render_items(App& ap);
 	void render(App& ap);
 	virtual void Sync(App& ap) {}
-	// ÏÖÔÚÄ¬ÈÏµÄÊÇ Upload µÄÐ£Õý²»¸Ä±ä¿Ø¼þ±¾ÉíÖµ£¬Ö»¸Ä±äÄ¿±êÖµ¡£
+	// ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ïµï¿½ï¿½ï¿½ Upload ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ö»ï¿½Ä±ï¿½Ä¿ï¿½ï¿½Öµï¿½ï¿½
 	virtual void Upload(App& ap) const {}
 
 	void Update(App& ap) override;

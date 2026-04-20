@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #define dt (app.fps.dt())
 #define dur (app.fps.dur())
 #define scr (app.scr)

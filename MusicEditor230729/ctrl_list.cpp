@@ -1,4 +1,4 @@
-#include "ctrl_list.h"
+ï»¿#include "ctrl_list.h"
 
 CtrlListX::CtrlListX(vector<Control*> const& cs) : cs(cs) {}
 int CtrlListX::GetW() const {
@@ -18,7 +18,7 @@ void CtrlListX::Update(App &app) {
 	int cur_x = tl.x;
 	for (auto c : cs) { c->vp = vp;
 		c->tl.x = cur_x; c->tl.y = tl.y;
-		// ³ÉÔ±ÊÇÒªÏÈ Update È»ºóÔÙÇó¿í¶ÈµÄ¡£
+		// æˆå‘˜æ˜¯è¦å…ˆ Update ç„¶åŽå†æ±‚å®½åº¦çš„ã€‚
 		c->Update(app); cur_x += c->GetW();
 	}
 }

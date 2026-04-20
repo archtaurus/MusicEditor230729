@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #define dt (cur.fps.dt())
 #define dur (cur.fps.dur())
 #define scr (cur.scr)

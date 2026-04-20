@@ -1,4 +1,4 @@
-#include "bgr.h"
+ï»¿#include "bgr.h"
 #include "cur.h"
 #include "nrect.h"
 #include "track.h"
@@ -61,7 +61,7 @@ double Bgr::xttb(Cur& cur, int x) const {
 #define sdbx(x) (bgr.sdbx(cur, x))
 #define sdby(x) (bgr.sdby(cur, x))
 
-// Ö®Ç°°Ñ tl_sht_rel ¸Ä³ÉÁË vec2£¬µ¼ÖÂÕâÀïºÜ¶àÂé·³£¬ÒÔºóÒª×¢Òâ¡£
+// ä¹‹å‰æŠŠ tl_sht_rel æ”¹æˆäº† vec2ï¼Œå¯¼è‡´è¿™é‡Œå¾ˆå¤šéº»çƒ¦ï¼Œä»¥åè¦æ³¨æ„ã€‚
 void Bgr::render_mouse(Cur& cur) {
 	if (hvsht && !msd[0] && !msd[1] && !msd[2]) {
 		double t = sdbx(msp.x); int tn = sdby(msp.y);
@@ -89,7 +89,7 @@ void Bgr::render_piano(Cur& cur) {
 	rep(i, 0, ntn) {
 		dvec p = tl + dvec(0, (int)tl_sht_rel.y + i * h_grid);
 		dcol c = find(wt.begin(), wt.end(), i % 12) != wt.end() ? dcol(100) : dcol();
-		// »­±ß¿òĞ§ÂÊ²»¸ß£¬µ«Ê¡ÊÂ£¬Ò²»áÓĞÒ»Ğ©Ò»¸öÏñËØµÄÏ¸½ÚÎÊÌâ¡£
+		// ç”»è¾¹æ¡†æ•ˆç‡ä¸é«˜ï¼Œä½†çœäº‹ï¼Œä¹Ÿä¼šæœ‰ä¸€äº›ä¸€ä¸ªåƒç´ çš„ç»†èŠ‚é—®é¢˜ã€‚
 		draw_px_rect_framed_raw(scr, p, w_piano - 1, h_grid, scr.rect(), c, c_main_frame);
 	}
 }
@@ -109,7 +109,7 @@ void Bgr::render_number(Cur& cur) {
 	rep(i, 0, w / w_grid / nbt + 1) {
 		int tmp = mod((int)tl_sht_rel.x, w_grid * nbt) + i * w_grid * nbt;
 		if (tmp >= (int)tl_sht_rel.x) {
-			// ¿ÉÄÜÓĞ¸ü¼òµ¥µÄ×ö·¨£¬µ«ÕâÑùÊ¡ÄÔ×Ó¡£
+			// å¯èƒ½æœ‰æ›´ç®€å•çš„åšæ³•ï¼Œä½†è¿™æ ·çœè„‘å­ã€‚
 			wstring s = tw((tmp - (int)tl_sht_rel.x) / w_grid); dvec p;
 			p.x = tl.x + w_piano + tmp + 1; p.y = h - str_wh(s, ft, 0).y - 5;
 			draw_str(scr, dscr, 999, s, c_num, ft, p, 0, vp_sht());
@@ -130,9 +130,9 @@ void Bgr::render(Cur& cur) {
 		dcol(255), ft, tl + dvec(10, 10), w - 20, bgr.vp());
 }
 
-// Óöµ½Ò»¸öÎÊÌâ£¬¾ÍÊÇÍÏ¶¯Ê±Êó±êÎŞÒâ¼ä»á±»ÆäËü¶«Î÷²¶»ñ¡£
-// ÊÇ·ñ¿ÉÒÔÌí¼ÓÒ»¸ö MouseOwner, ÎÒ¾õµÃÆäÊµ¿ÉÒÔ¡£µ«ÓĞµãÂé·³ÁË¡£
-// hovered ¶¯»­Êó±êÃ»ÓĞ¼ü°´ÏÂÊ±²¥·Å£¬ÎÒ¾õµÃÕâ¸ö×îºÃ¡£
+// é‡åˆ°ä¸€ä¸ªé—®é¢˜ï¼Œå°±æ˜¯æ‹–åŠ¨æ—¶é¼ æ ‡æ— æ„é—´ä¼šè¢«å…¶å®ƒä¸œè¥¿æ•è·ã€‚
+// æ˜¯å¦å¯ä»¥æ·»åŠ ä¸€ä¸ª MouseOwner, æˆ‘è§‰å¾—å…¶å®å¯ä»¥ã€‚ä½†æœ‰ç‚¹éº»çƒ¦äº†ã€‚
+// hovered åŠ¨ç”»é¼ æ ‡æ²¡æœ‰é”®æŒ‰ä¸‹æ—¶æ’­æ”¾ï¼Œæˆ‘è§‰å¾—è¿™ä¸ªæœ€å¥½ã€‚
 void Bgr::Update(Cur& cur) {
 	bool nr_selected = !nrsel.empty();
 	if (sht_repos) { tl_sht_rel += vec2(msp - msp_old); sht_repos = msd[1]; }
@@ -146,7 +146,7 @@ void Bgr::Update(Cur& cur) {
 		tl_sht_rel.x += min(0, b - msp.x) * dt * 8;
 		tl_sht_rel.y += max(0, c - msp.y) * dt * 8;
 		tl_sht_rel.y += min(0, d - msp.y) * dt * 8;
-		// ¿´ÆğÀ´ºÃ¸´ÔÓ£¬²»ÖªµÀÔõÃ´¸Ä½ø¡£
+		// çœ‹èµ·æ¥å¥½å¤æ‚ï¼Œä¸çŸ¥é“æ€ä¹ˆæ”¹è¿›ã€‚
 		for (auto& nr : nrsel) { dvec p = nr->msp_rel + msp;
 			nr->tone = clmp(sdby(p.y), tna, tnb); 
 			double t0 = xta(p.x);
@@ -192,7 +192,7 @@ void Bgr::Update(Cur& cur) {
 			} rc = {};
 		}
 	} else if (msc(0) && begin_rect_sel) {
-		// ÕâÒ²ÊÇÒª×¢ÒâµÄ£¬ÒòÎªËüµÄÖµ¸ÄÁË£¬ËùÒÔÔÚËüÖ®ºó²»ÄÜ¼ì²éËüÁË¡£
+		// è¿™ä¹Ÿæ˜¯è¦æ³¨æ„çš„ï¼Œå› ä¸ºå®ƒçš„å€¼æ”¹äº†ï¼Œæ‰€ä»¥åœ¨å®ƒä¹‹åä¸èƒ½æ£€æŸ¥å®ƒäº†ã€‚
 		begin_rect_sel = false; rect_sel = true;
 		rc = drect(msp, 0, 0);
 	}

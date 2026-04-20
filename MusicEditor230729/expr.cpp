@@ -1,4 +1,4 @@
-#include "expr.h"
+ï»¿#include "expr.h"
 #include "bra.h"
 
 expr::expr(wstring const& typ) : typ(typ) {}
@@ -38,7 +38,7 @@ pre_expr::pre_expr(expr const& ex) : ex(ex) {}
 pre_expr::pre_expr(token const& tk) : tk(tk) { istk = true; }
 
 bool is_uni_operator(token const& tk) {
-	// ÓÉÓÚ +£¬- µÄÌØÊâĞÔ£¬ËüÃÇ¶¼±»µ±³É¶şÔªÔËËã·û´¦Àí¡£
+	// ç”±äº +ï¼Œ- çš„ç‰¹æ®Šæ€§ï¼Œå®ƒä»¬éƒ½è¢«å½“æˆäºŒå…ƒè¿ç®—ç¬¦å¤„ç†ã€‚
 	if (tk.typ.empty()) { return false; }
 	auto const& s = tk.typ;
 	return s == L"!";

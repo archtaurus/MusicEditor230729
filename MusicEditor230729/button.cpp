@@ -1,4 +1,4 @@
-#include "button.h"
+﻿#include "button.h"
 #include "app.h"
 #include "draw_str.h"
 #include "draw_comp.h"
@@ -8,7 +8,7 @@
 
 Button::Button(int w) : w(w) {
 	gap = { 10, 10 }; dep = 1000;
-	txt = L"��ť"; h = 30;
+	txt = L"鎸夐挳"; h = 30;
 
 	c_txt = { 255, 255, 255 };
 	c_frame = { 150, 150, 150 };

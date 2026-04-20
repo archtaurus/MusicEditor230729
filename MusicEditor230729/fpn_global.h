@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "label.h"
 #include "button.h"
 #include "textbox.h"
@@ -35,7 +35,7 @@ struct FPnGlobal : FPnLan {
 	ptr<CbFollowPlay> cb_follow_play;
 	ptr<CtrlListX> clx_follow_play;
 	ptr<LbLan> lb_auto_align;
-	// ÒÔºóÓ¦¸Ã°ÑÕâ¸ö Label ÕûºÏµ½ Checkbox ÀïÃæÈ¥¡£
+	// ï¿½Ôºï¿½Ó¦ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ Label ï¿½ï¿½ï¿½Ïµï¿½ Checkbox ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½
 	ptr<CbAutoAlign> cb_auto_align;
 	ptr<CtrlListX> clx_auto_align;
 	ptr<CtrlListY> cly;

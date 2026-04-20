@@ -1,4 +1,4 @@
-#include "dvec.h"
+﻿#include "dvec.h"
 
 dvec dvec::from_str(wstring const& s) {
 	dvec v; int i = 0;

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "utils.h"
 
 int constexpr TYP_NUM = 0;

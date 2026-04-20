@@ -1,11 +1,11 @@
-#include "fpn_lang.h"
+ï»¿#include "fpn_lang.h"
 #include "ui.h"
 #include "cur.h"
 
 #define cur (*(Cur*)&app)
 #include "my_def.h"
 
-BtChi::BtChi() : Button(150) { txt = L"ÖÐÎÄ"; }
+BtChi::BtChi() : Button(150) { txt = L"ä¸­æ–‡"; }
 void BtChi::OnClick(App& app) { cur.lan = LAN_CHI; ui.fpn_lang->hide(app); }
 
 BtEng::BtEng() : Button(150) { txt = L"English"; }

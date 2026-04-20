@@ -1,4 +1,4 @@
-#include "dragbar.h"
+ï»¿#include "dragbar.h"
 #include "app.h"
 #include "draw_geo.h"
 
@@ -17,7 +17,7 @@ DragbarX::DragbarX(int w) : bw(w) {
 int DragbarX::GetW() const { return bw + gap.x; }
 int DragbarX::GetH() const { return nh + gap.y; }
 
-// ÏÂÃæµÄ±í´ïÊ½ÊÇÕıÈ·µÄ£¬²»ĞèÒª¼ÓÒ»¼õÒ»Ê²Ã´µÄ¡£
+// ä¸‹é¢çš„è¡¨è¾¾å¼æ˜¯æ­£ç¡®çš„ï¼Œä¸éœ€è¦åŠ ä¸€å‡ä¸€ä»€ä¹ˆçš„ã€‚
 double DragbarX::uval() const { return (double)nx_rel / (bw - nw); }
 void DragbarX::set_nx_rel(double uv) {
 	int tmp = uv * (bw - nw);
@@ -38,7 +38,7 @@ void DragbarX::Update(App& app) {
 	hovered = (hvd == this);
 	if (dragged) {
 		nx_rel = clmp(msp.x - (tl.x + nw / 2), 0, bw - nw);
-		// ÔÚ¸Õ¸Õ×¥×¡µÄÄÇÒ»Ö¡Ã»ÓĞ¸üĞÂ£¬ÔÚ·ÅÏÂµÄÄÇÒ»Ö¡»¹ÔÚ¸üĞÂ¡£Ê¡ÊÂ¡£
+		// åœ¨åˆšåˆšæŠ“ä½çš„é‚£ä¸€å¸§æ²¡æœ‰æ›´æ–°ï¼Œåœ¨æ”¾ä¸‹çš„é‚£ä¸€å¸§è¿˜åœ¨æ›´æ–°ã€‚çœäº‹ã€‚
 		Upload(app);
 		if (enabled && !msd[0]) { OnDone(app); }
 		dragged = enabled && msd[0];

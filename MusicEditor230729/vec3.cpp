@@ -1,4 +1,4 @@
-#include "vec3.h"
+ï»¿#include "vec3.h"
 
 vec3 vec3::from_str(wstring const& s) {
 	vec3 v; int i = 0;
@@ -33,7 +33,7 @@ void cam::calc() {
 	p.z = sin(phi);
 	p = p * r + look;
 
-	// ÏÂÃæ¿ÉÄÜ»á²úÉúÆæÒìµÄÇé¿ö¡£
+	// ä¸‹é¢å¯èƒ½ä¼šäº§ç”Ÿå¥‡å¼‚çš„æƒ…å†µã€‚
 	vec3 vy = (look - p).unit();
 	vec3 vx = cross(vy, vec3(0, 0, 1)).unit();
 	vec3 vz = cross(vx, vy);
@@ -42,7 +42,7 @@ void cam::calc() {
 	ct = vp.tl + dvec(vp.w, vp.h) / 2;
 }
 void cam::calc_fp() {
-	// µÚÒ»ÈË³ÆÄ£Ê½£¬ÉáÆúÁË look, r¡£
+	// ç¬¬ä¸€äººç§°æ¨¡å¼ï¼Œèˆå¼ƒäº† look, rã€‚
 	vec3 vy; 
 	vy.z = sin(phi);
 	vy.x = cos(phi) * sin(theta);

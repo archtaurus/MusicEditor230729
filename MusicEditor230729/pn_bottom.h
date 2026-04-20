@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "panel.h"
 #include "label.h"
 #include "ctrl_list.h"

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "dvec.h"
 
 struct App;
@@ -8,15 +8,15 @@ struct Control {
 
 	virtual ~Control() {}
 	virtual void Update(App &app) {}
-	// ÔÚÎö¹¹Ö®Ç°ÒªÖ´ÐÐ Discard¡£
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®Ç°ÒªÖ´ï¿½ï¿½ Discardï¿½ï¿½
 	virtual void Discard(App& app) {}
 	virtual void PreUpdate(App& app) {}
 
 	virtual int GetW() const { return 0; }
 	virtual int GetH() const { return 0; }
 };
-// Delegate »á×Ô¶¯ Discard ËüµÄ³ÉÔ±£¬ÕâÊÇËüÓë CtrlList ²»Í¬µÄÒ»µã¡£
-// Delegate ÒªÇó c Ò»Ö±ÊÇÓÐÐ§µÄ£¬¼´Ê¹ÊÇÔÚ c ±»¸²¸ÇµÄÄÇÒ»Ö¡¡£
+// Delegate ï¿½ï¿½ï¿½Ô¶ï¿½ Discard ï¿½ï¿½ï¿½Ä³ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ CtrlList ï¿½ï¿½Í¬ï¿½ï¿½Ò»ï¿½ã¡£
+// Delegate Òªï¿½ï¿½ c Ò»Ö±ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ä£ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ c ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½Ò»Ö¡ï¿½ï¿½
 struct Delegate : Control {
 	Control* c = NULL;
 

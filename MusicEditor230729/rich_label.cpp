@@ -1,4 +1,4 @@
-#include "rich_label.h"
+ï»¿#include "rich_label.h"
 #include "app.h"
 #include "draw_str.h"
 
@@ -7,7 +7,7 @@
 RichLabel::RichLabel(int w) : w(w) {
 	gap = { 10, 10 }; dep = 1000;
 	fixed_w = true;
-	c_txt = { 255, 255, 255 }; txt = L"´ó¶ÎÎÄ±¾";
+	c_txt = { 255, 255, 255 }; txt = L"å¤§æ®µæ–‡æœ¬";
 }
 int RichLabel::GetW() const { return w + gap.x; }
 int RichLabel::GetH() const { return h + gap.y; }

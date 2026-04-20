@@ -1,4 +1,4 @@
-#include "bra.h"
+ï»¿#include "bra.h"
 
 wstring tw(bra const& b) {
 	wstring tmp;
@@ -33,7 +33,7 @@ vector<bra> bra_analysis(vector<token> const& in) {
 		zero = bra1 == 0 && bra2 == 0 && bra3 == 0;
 		if (zero) { 
 			if (b.typ) {
-				// ÆäËü²»Ïà¹ØµÄµØ·½ĞèÒªÊÇÁãÖµ£¬ºóÃæÎªÁËÊ¡ÊÂÓĞÊ±»áÀûÓÃÕâÒ»µã¡£
+				// å…¶å®ƒä¸ç›¸å…³çš„åœ°æ–¹éœ€è¦æ˜¯é›¶å€¼ï¼Œåé¢ä¸ºäº†çœäº‹æœ‰æ—¶ä¼šåˆ©ç”¨è¿™ä¸€ç‚¹ã€‚
 				b.bras = bra_analysis(tmp); 
 				tmp.clear(); b.tk = {};
 			} else { b.tk = tk; } out.push_back(b);

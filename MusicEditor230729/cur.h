@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "app.h"
 #include "var.h"
 #include "complex.h"

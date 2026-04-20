@@ -1,4 +1,4 @@
-#include "app_wv.h"
+ï»¿#include "app_wv.h"
 
 wvblk::wvblk(int n) : dat(n) {
 	hdr.lpData = (LPSTR)dat.data();
@@ -18,7 +18,7 @@ bool wvblk::finish(HWAVEOUT hwo) {
 }
 
 app_wv::app_wv() {
-	// ÕâÀïÊµÊ±²¥·ÅµÄ´¦ÀíÎÒ»¹²»ÖªµÀÔõÃ´×öµÄ¸üºÃ¡£
+	// è¿™é‡Œå®æ—¶æ’­æ”¾çš„å¤„ç†æˆ‘è¿˜ä¸çŸ¥é“æ€ä¹ˆåšçš„æ›´å¥½ã€‚
 	sp = 44100; len_block = 5e-4;
 	n_safe = 120; n_blocks = 512;
 }
@@ -27,7 +27,7 @@ bool app_wv::init() {
 	wofm.wFormatTag = WAVE_FORMAT_PCM;
 	wofm.nChannels = 1;
 	wofm.nSamplesPerSec = sp;
-	// ºÃÏñÕâÀï²»ÄÜÊÇÆäËüÊıÁË£¬Ã»ÔõÃ´¸ãÇå³ş¡£
+	// å¥½åƒè¿™é‡Œä¸èƒ½æ˜¯å…¶å®ƒæ•°äº†ï¼Œæ²¡æ€ä¹ˆææ¸…æ¥šã€‚
 	wofm.wBitsPerSample = 16;
 	wofm.nBlockAlign = 2;
 	wofm.nAvgBytesPerSec = 2 * sp;

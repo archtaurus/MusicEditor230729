@@ -1,4 +1,4 @@
-#include "app_item.h"
+ï»¿#include "app_item.h"
 
 void app_input::track_mouse() {
 	if (!mouse_tracked) {
@@ -30,7 +30,7 @@ void app_input::init(HWND hwnd) {
 }
 void app_input::reset() {
 	msw = 0; chs.clear();
-	// msp ÔÚ App ÖĞÒÑ¾­×ö¹ıÁË¡£
+	// msp åœ¨ App ä¸­å·²ç»åšè¿‡äº†ã€‚
 	msd_old = msd; kbd_old = kbd;
 	kbmsg.fill(0); bar_clicked = false;
 }

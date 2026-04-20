@@ -1,4 +1,4 @@
-#include "lfo.h"
+﻿#include "lfo.h"
 #include "cur.h"
 #include "inst.h"
 
@@ -6,19 +6,19 @@
 #define nbt (cur.n_beat)
 
 LFO::LFO(Cur& cur, Inst& inst, Var const& v) {
-#define find(nm) v.dic.find(L#nm) != v.dic.end()
+#define find(nm) v.dic.find(std::wstring(L ## #nm)) != v.dic.end()
 
 	if (find(type)) {
-		auto& tmp = *v.dic.at(L"type");
+		auto& tmp = *v.dic.at(std::wstring(L"type"));
 		if (tmp.typ == L"num") { type = tmp.num; }
 		else { nm_fun = tmp.str; user_shape = true; }
 	}
 
-#define get(nm) if(find(nm)) { nm = v.dic.at(L#nm)->num; }
+#define get(nm) if(find(nm)) { nm = v.dic.at(std::wstring(L ## #nm))->num; }
 	get(sheet_time);
 #undef get
 
-#define get(nm) if(find(nm)) { nm = Num(cur, *v.dic.at(L#nm)); }
+#define get(nm) if(find(nm)) { nm = Num(cur, *v.dic.at(std::wstring(L ## #nm))); }
 	get(freq);
 #undef get
 

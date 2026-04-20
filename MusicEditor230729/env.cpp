@@ -1,11 +1,11 @@
-#include "env.h"
+﻿#include "env.h"
 #include "var.h"
 #include "inst.h"
 
 Env::Env(Cur& cur, Inst& inst, Var const& v) {
-#define find(nm) v.dic.find(L#nm) != v.dic.end()
+#define find(nm) v.dic.find(std::wstring(L ## #nm)) != v.dic.end()
 	a_exp = 1; d_exp = 1; r_exp = 1;
-#define get(nm) if(find(nm)) { nm = Num(cur, *v.dic.at(L#nm)); }
+#define get(nm) if(find(nm)) { nm = Num(cur, *v.dic.at(std::wstring(L ## #nm))); }
 	get(attack); get(hold); get(decay); get(sustain); get(release);
 	get(a_exp); get(d_exp); get(r_exp);
 #undef get

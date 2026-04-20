@@ -1,4 +1,4 @@
-#include "float_panel.h"
+ï»¿#include "float_panel.h"
 #include "app.h"
 #include "control.h"
 #include "scrollbar.h"
@@ -11,7 +11,7 @@
 
 FloatPanel::FloatPanel() {
 	dep = 1000;
-	txt = L"´°¿Ú";
+	txt = L"çª—å£";
 	wheel_mtp = 40;
 	tl_show_rel = { 10, 40 };
 
@@ -72,7 +72,7 @@ void FloatPanel::set_c(App &app, Control* _c) {
 void FloatPanel::set_tl(dvec const& p) {
 	if (c) { 
 		c->tl += p - tl; 
-		// ÔÚµ÷ÓÃ vp_show Ö®Ç°ĞèÒªÏÈ¸üĞÂ tl¡£
+		// åœ¨è°ƒç”¨ vp_show ä¹‹å‰éœ€è¦å…ˆæ›´æ–° tlã€‚
 		tl = p; c->vp = vp_show(); 
 	}
 	sb->tl = p + dvec(w - sb->w, h_bar);
@@ -151,7 +151,7 @@ void FloatPanel::Init() {
 	init_c(); 
 	if (use_sb) { init_sb(); }
 }
-// ÕâÒ²ÊÇ±È½ÏÌØÊâ£¬Ïàµ±ÓÚÒª´¦Àí×Ô¼ºµÄ Discard¡£
+// è¿™ä¹Ÿæ˜¯æ¯”è¾ƒç‰¹æ®Šï¼Œç›¸å½“äºè¦å¤„ç†è‡ªå·±çš„ Discardã€‚
 void FloatPanel::Update(App &app) {
 	if (!shown) { return; }
 	full = (c != NULL) && h_show < c->GetH();
@@ -160,10 +160,10 @@ void FloatPanel::Update(App &app) {
 
 	wheel_and_clamp_cy(app);
 	if (hovered && msc(0)) { t_click = dur; }
-	// ÕâÏî°ÚÔÚ×îºóÊÇÒòÎªËû¿ÉÄÜÖ´ĞĞ hide Ö¸Áî¡£
+	// è¿™é¡¹æ‘†åœ¨æœ€åæ˜¯å› ä¸ºä»–å¯èƒ½æ‰§è¡Œ hide æŒ‡ä»¤ã€‚
 	deal_caption(app);
 
-	// ÎÒ¾õµÃÕâÀïÂÒµôÁË¡£µ«ÊÇÎªÁËÕâ¸öÖØ¹¹ºÃÏñ²»ÖµµÃ¡£
+	// æˆ‘è§‰å¾—è¿™é‡Œä¹±æ‰äº†ã€‚ä½†æ˜¯ä¸ºäº†è¿™ä¸ªé‡æ„å¥½åƒä¸å€¼å¾—ã€‚
 	if (shown) {
 		render(app);
 		if (c) { c->Update(app); }

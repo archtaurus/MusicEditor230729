@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "ctrl_list.h"
 #include "rich_label.h"
 #include "float_panel.h"

@@ -1,4 +1,4 @@
-#include "playhead.h"
+ï»¿#include "playhead.h"
 #include "cur.h"
 #include "bgr.h"
 #include "draw_geo.h"
@@ -48,7 +48,7 @@ void PlayHead::Update(Cur& cur) {
 		}
 	}
 	else { 
-		// follow_play ÏÖÔÚ×÷Îª bgr ³ÉÔ±²»ºÏÊÊÁË¡£
+		// follow_play ç°åœ¨ä½œä¸º bgr æˆå‘˜ä¸åˆé€‚äº†ã€‚
 		if (bgr.follow_play && cur.play) {
 			bgr.tl_sht_rel.x -= sdx(t) - (bgr.tl.x + bgr.w / 2);
 		}

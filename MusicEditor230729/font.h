@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "tile.h"
 
 wchar_t extern CHINESE_CHARS[];
@@ -8,8 +8,8 @@ wchar_t extern UPPERS[];
 wchar_t extern LOWERS[];
 wchar_t extern ADDITIONAL_CHINESE_CHARS[];
 
-// ÖÐÎÄ×ÖÌå¹æ¸ñ£º»­²¼£º600x600£¬´ÖÏ¸£º40£¬±£´æºó£º60x60¡£
-// ÓÉÓÚÀúÊ·Ô­Òò£¬ÑÕÉ«Ò»°ãÊÇ: (0,255,0)¡£
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ£º»ï¿½ï¿½ï¿½ï¿½ï¿½600x600ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½40ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½60x60ï¿½ï¿½
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê·Ô­ï¿½ï¿½ï¿½ï¿½É«Ò»ï¿½ï¿½ï¿½ï¿½: (0,255,0)ï¿½ï¿½
 struct font {
 	int h = 0;
 	wstring chi;
@@ -20,7 +20,7 @@ struct font {
 	font(int h);
 
 	tile const& operator[](wchar_t c) const;
-	// ÑÏ¸ñÀ´ËµÓÃµ¥¶ÀµÄ·½·¨¸üºÃ£¬µ«ÊÇÕâÑùºÜ·½±ã¡£
+	// ï¿½Ï¸ï¿½ï¿½ï¿½Ëµï¿½Ãµï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü·ï¿½ï¿½ã¡£
 	wstring rnd(int n) const;
 
 	bool load_font(wstring const& name, wchar_t c);

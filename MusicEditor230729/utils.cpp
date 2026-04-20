@@ -1,4 +1,4 @@
-#include "utils.h"
+ï»¿#include "utils.h"
 
 int drnd(int a, int b) {
 	static std::random_device rd;
@@ -21,12 +21,12 @@ double nrnd(double mean, double stddev) {
 	return d(generator);
 }
 
-// ÓÃ sprintf_s ¿ÉÒÔ±£Ö¤°²È«£¬µ«²»ÖªµÀ 1024 µÄ¿Õ¼äÊÇ·ñ×ã¹»¡£
+// ç”¨ sprintf_s å¯ä»¥ä¿è¯å®‰å…¨ï¼Œä½†ä¸çŸ¥é“ 1024 çš„ç©ºé—´æ˜¯å¦è¶³å¤Ÿã€‚
 wstring tw2(double d) {
 	static wchar_t tmp[1024];
 	swprintf_s(tmp, L"%.2lf", d); return tmp;
 }
-// ÏÂÃæµÄ¹æ·¶Ó¦¸Ã²Î¿¼ MSDN¡£
+// ä¸‹é¢çš„è§„èŒƒåº”è¯¥å‚è€ƒ MSDNã€‚
 wstring tw(string const& s) {
 	vector<wchar_t> tmp(s.size() + 1);
 	swprintf_s(tmp.data(), tmp.size(), L"%S", s.c_str());
@@ -39,7 +39,7 @@ string to_string(wstring const& s) {
 }
 double atof(string const& s) { return atof(s.c_str()); }
 double wtof(wstring const& s) { return atof(to_string(s)); }
-// ±ØĞëÓÃ _wfopen£¬·ñÔòÓĞ±àÂëÎÊÌâ¡£
+// å¿…é¡»ç”¨ _wfopenï¼Œå¦åˆ™æœ‰ç¼–ç é—®é¢˜ã€‚
 FILE* wfopen(wstring const& nm, wstring const& arg) {
 	FILE* f = NULL;
 	_wfopen_s(&f, nm.c_str(), arg.c_str()); return f;
@@ -71,7 +71,7 @@ void print_console
 }
 
 void set_locale() { setlocale(LC_ALL, "zh-CN"); }
-// ÎÒ²»¶®ÏÂÃæµÄ Lock ºÍ Unlock ÊÇÊ²Ã´ÒâË¼¡£
+// æˆ‘ä¸æ‡‚ä¸‹é¢çš„ Lock å’Œ Unlock æ˜¯ä»€ä¹ˆæ„æ€ã€‚
 wstring get_clipboard() {
 	wstring clip;
 	if (OpenClipboard(NULL)) {
@@ -83,7 +83,7 @@ wstring get_clipboard() {
 		CloseClipboard();
 	} return clip;
 }
-// ´Ó MSDN µÄÀı×Ó¸ÄµÄ£¬²»Ì«¶®£¬¿ÉÄÜÓĞ´í¡£
+// ä» MSDN çš„ä¾‹å­æ”¹çš„ï¼Œä¸å¤ªæ‡‚ï¼Œå¯èƒ½æœ‰é”™ã€‚
 void set_clipboard(wstring const& s) {
 	if (OpenClipboard(NULL)) {
 		int sz = (s.size() + 1) * sizeof(wchar_t);

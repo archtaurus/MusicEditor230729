@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "num.h"
 
 struct Cur;
@@ -11,7 +11,7 @@ struct Inst {
 	double t_end_rel = 0;
 	double t_release = 0;
 
-	// vol Îª³£ÊýÊ± Inst Ö÷ÒôÁ¿ºÍ Osc ÒôÁ¿µÄÚ¹ÊÍ²»Í¬¡£
+	// vol Îªï¿½ï¿½ï¿½ï¿½Ê± Inst ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Osc ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½Í²ï¿½Í¬ï¿½ï¿½
 	Num vol;
 	bool fixed_tone = false;
 

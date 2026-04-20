@@ -1,4 +1,4 @@
-#include "osc.h"
+ï»¿#include "osc.h"
 #include "cur.h"
 #include "var.h"
 #include "env.h"
@@ -6,8 +6,8 @@
 #include "inst.h"
 #include "filter.h"
 
-// transpose µ±×÷Ä³ÖÖ¿ì½İµÄ fm ºÃÁË¡£
-// Ò»¸ö¿ÉÒÔµÄ³¢ÊÔÊÇ dph ¼ÓÉÏËæ»úÈÅ¶¯£¬¿ÉÊÇÎÒÓĞµãÃÔºıÁË¡£
+// transpose å½“ä½œæŸç§å¿«æ·çš„ fm å¥½äº†ã€‚
+// ä¸€ä¸ªå¯ä»¥çš„å°è¯•æ˜¯ dph åŠ ä¸Šéšæœºæ‰°åŠ¨ï¼Œå¯æ˜¯æˆ‘æœ‰ç‚¹è¿·ç³Šäº†ã€‚
 Mouth::Mouth(double ph, double lv) : ph(ph), lv(lv) {}
 double Mouth::Sample(double dph, int type) {
 	ph = modf(ph + dph, 1);
@@ -24,11 +24,11 @@ double Mouth::Sample(double dph, vector<double> const& ys) {
 }
 
 FM::FM(Cur &cur, Inst &inst, Var const& v) {
-#define find(nm) v.dic.find(L#nm) != v.dic.end()
-#define get(nm) if (find(nm)) { nm = v.dic.at(L#nm)->num; }
+#define find(nm) v.dic.find(std::wstring(L ## #nm)) != v.dic.end()
+#define get(nm) if (find(nm)) { nm = v.dic.at(std::wstring(L ## #nm))->num; }
 	get(type); get(id);
 #undef get
-#define get(nm) if(find(nm)) { nm = Num(cur, inst, *v.dic.at(L#nm)); }
+#define get(nm) if(find(nm)) { nm = Num(cur, inst, *v.dic.at(std::wstring(L ## #nm))); }
 	get(amplitude);
 #undef get
 #undef find
@@ -40,23 +40,23 @@ FM::FM(Cur &cur, Inst &inst, Var const& v) {
 Osc::Osc(Cur& cur, Inst& inst, Var const& v) {
 	vol = 1;
 
-#define find(nm) v.dic.find(L#nm) != v.dic.end()
+#define find(nm) v.dic.find(std::wstring(L ## #nm)) != v.dic.end()
 	if (find(type)) { 
-		auto& tmp = *v.dic.at(L"type");
+		auto& tmp = *v.dic.at(std::wstring(L"type"));
 		if (tmp.typ == L"num") { type = tmp.num; }
 		else { nm_fun = tmp.str; user_shape = true; }
 	}
 	vector<double> phs;
-	if (find(phase)) for (auto ph : v.dic.at(L"phase")->vec) {
+	if (find(phase)) for (auto ph : v.dic.at(std::wstring(L"phase"))->vec) {
 		phs.push_back(ph->num);
 	}
 
-#define get(nm) if(find(nm)) { nm = Num(cur, inst, *v.dic.at(L#nm)); }
+#define get(nm) if(find(nm)) { nm = Num(cur, inst, *v.dic.at(std::wstring(L ## #nm))); }
 	get(vol); get(transpose); get(detune); get(detune_power);
 #undef get
 
 	int unison = 0;
-#define get(nm) if (find(nm)) { nm = v.dic.at(L#nm)->num; }
+#define get(nm) if (find(nm)) { nm = v.dic.at(std::wstring(L ## #nm))->num; }
 	get(unison); get(use);
 #undef get
 	unison = max(1, unison);
@@ -77,12 +77,12 @@ Osc::Osc(Cur& cur, Inst& inst, Var const& v) {
 	}
 
 	if (find(fm)) {
-		auto& vs = v.dic.at(L"fm")->vec;
+		auto& vs = v.dic.at(std::wstring(L"fm"))->vec;
 		for (auto v : vs) { fms.push_back(FM(cur, inst, *v)); }
 	}
 
 	if (find(filter)) {
-		auto& vs = v.dic.at(L"filter")->vec;
+		auto& vs = v.dic.at(std::wstring(L"filter"))->vec;
 		for (auto v : vs) { fs.push_back(msh<Filter>(cur, inst, *v)); }
 	}
 	

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "vec2.h"
 #include "font.h"
 #include "control.h"
@@ -22,7 +22,7 @@ struct RichTextbox : Control {
 	wstring str;
 	vec2 tl_str_rel;
 	int edit_a = 0, edit_b = 0;
-	// ÏÂÃæµÄ rel ÊÇÏà¶ÔÓÚ tl_str_rel µÄ¡£
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ rel ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ tl_str_rel ï¿½Ä¡ï¿½
 	int x_cursor_rel_hist = 0;
 
 	bool edit = false;

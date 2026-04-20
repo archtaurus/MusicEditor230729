@@ -1,4 +1,4 @@
-#include "rich_textbox.h"
+ï»¿#include "rich_textbox.h"
 #include "app.h"
 #include "draw_geo.h"
 #include "draw_str.h"
@@ -100,7 +100,7 @@ void RichTextbox::hdl_right(App& app) {
 	cursor_change = selecting = false;
 	if (selected()) { edit_a = edit_b = edit_end(); }
 	else {
-		// ÏÂÃæ²»Òª¼õÒ»¡£
+		// ä¸‹é¢ä¸è¦å‡ä¸€ã€‚
 		if (++edit_a > str.size()) { edit_a = str.size(); }
 		edit_b = edit_a;
 	} update_x_cursor_rel_hist(app);
@@ -135,7 +135,7 @@ void RichTextbox::hdl_delete(App& app) {
 		auto b = str.end();
 		str = left() + wstring(a, b);
 	}
-	// °´µÀÀí delete ²»ÓÃ¸üĞÂµÄ¡£
+	// æŒ‰é“ç† delete ä¸ç”¨æ›´æ–°çš„ã€‚
 	// update_x_cursor_rel_hist(app);
 }
 void RichTextbox::hdl_back(App& app) {
@@ -204,14 +204,14 @@ void RichTextbox::clamp_cs_not_selecting(App& app) {
 	} else if (p_cursor_rel(app).x < edit_margin.x) {
 		tl_str_rel.x += edit_margin.x - p_cursor_rel(app).x;
 	}
-	// ÎÒÃÇ²»¶Ô y ÕâÃ´×ö£¬Ö÷ÒªÊÇÎªÁËÈÃÊó±ê¹öÂÖÕı³££¬ÆäÊµÏ¸ÏëÍ¦Ææ¹ÖµÄ¡£
+	// æˆ‘ä»¬ä¸å¯¹ y è¿™ä¹ˆåšï¼Œä¸»è¦æ˜¯ä¸ºäº†è®©é¼ æ ‡æ»šè½®æ­£å¸¸ï¼Œå…¶å®ç»†æƒ³æŒºå¥‡æ€ªçš„ã€‚
 }
 void RichTextbox::clamp_cursor(App& app) {
 	if (selecting) { clamp_cs_selecting(app); }
 	else { clamp_cs_not_selecting(app); }
 }
 void RichTextbox::clamp_str(App& app) {
-	// ³ıÁËÎÄ×Ö¹ıÉÙÒÔÍâ£¬clamp_selecting ºÍ wheel ºóÒ²ĞèÒªÕâÒ»²½¡£
+	// é™¤äº†æ–‡å­—è¿‡å°‘ä»¥å¤–ï¼Œclamp_selecting å’Œ wheel åä¹Ÿéœ€è¦è¿™ä¸€æ­¥ã€‚
 	dvec p_end_rel = (dvec)tl_str_rel + str_wh(str, ft, w_txt);
 	if (p_end_rel.x < max_x_cursor_rel()) {
 		tl_str_rel.x += max_x_cursor_rel() - p_end_rel.x;
@@ -219,7 +219,7 @@ void RichTextbox::clamp_str(App& app) {
 	if (p_end_rel.y < max_y_cursor_rel()) {
 		tl_str_rel.y += max_y_cursor_rel() - p_end_rel.y;
 	}
-	// ÏÂÃæÁ½ĞĞÊÇÅäºÏÉÏÃæµÄ¡£
+	// ä¸‹é¢ä¸¤è¡Œæ˜¯é…åˆä¸Šé¢çš„ã€‚
 	if (tl_str_rel.x > edit_margin.x) { tl_str_rel.x = edit_margin.x; }
 	if (tl_str_rel.y > edit_margin.y) { tl_str_rel.y = edit_margin.y; }
 }
@@ -252,17 +252,17 @@ void RichTextbox::render(App& app) {
 void RichTextbox::Update(App& app) {
 	hovered = (hvd == this);
 	if (edit) {
-		// ÎÒ¸Ğ¾õ selecting ÓĞ¹ØµÄÂß¼­Ò²ÊÇÓĞµãÂÒµÄ¡£
-		// ÔõÃ´¿´´ı UI ½»»¥ÕæµÄÊÇ¸ö´óÎÊÌâ¡£ÔõÃ´ÇåÎúµÄ±í´ïĞèÇó¡£
-		// ¸Ğ¾õ»¹ÊÇ²»Òª×êÅ£½Ç¼â£¬Õâ¿Ï¶¨²»ÊÇÍêÃÀµÄ×ö·¨£¬ÊÂÊµÉÏĞèÇó±¾Éí¾ÍºÜÄ£ºı¡£
+		// æˆ‘æ„Ÿè§‰ selecting æœ‰å…³çš„é€»è¾‘ä¹Ÿæ˜¯æœ‰ç‚¹ä¹±çš„ã€‚
+		// æ€ä¹ˆçœ‹å¾… UI äº¤äº’çœŸçš„æ˜¯ä¸ªå¤§é—®é¢˜ã€‚æ€ä¹ˆæ¸…æ™°çš„è¡¨è¾¾éœ€æ±‚ã€‚
+		// æ„Ÿè§‰è¿˜æ˜¯ä¸è¦é’»ç‰›è§’å°–ï¼Œè¿™è‚¯å®šä¸æ˜¯å®Œç¾çš„åšæ³•ï¼Œäº‹å®ä¸Šéœ€æ±‚æœ¬èº«å°±å¾ˆæ¨¡ç³Šã€‚
 		if (selecting) { select_b(app); }
 		if (enabled && hovered && msc(0)) { select_a(app); }
 		if (!msd[0]) { selecting = false; }
 		hdl_key(app); add_chs(app); clamp_cursor(app); Upload(app);
 
 		if (enabled && !hovered && msc(0)) { OnDone(app); }
-		if (!enabled || !hovered && msc(0)) {
-			// Çë×¢Òâ kb_owner µÄµÇ¼ÇÔÚ PreUpdate ÖĞ½øĞĞ¡£
+		if (!enabled || (!hovered && msc(0))) {
+			// è¯·æ³¨æ„ kb_owner çš„ç™»è®°åœ¨ PreUpdate ä¸­è¿›è¡Œã€‚
 			free_kb(this); edit = selecting = false;
 			edit_a = edit_b = 0; x_cursor_rel_hist = 0;
 		}

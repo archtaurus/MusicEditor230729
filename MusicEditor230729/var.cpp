@@ -1,10 +1,10 @@
-#include "var.h"
+ï»¿#include "var.h"
 #include "bra.h"
 #include "vec3.h"
 #include "proc.h"
 
-// Ã¿´Î¶¼ÄÜÕÒµ½ĞÂ bug£¬ºÜ¿ÉÄÜ»¹ÓĞÒ»Ğ© bug¡£
-// Í¬Ê±ËÙ¶ÈÉÏÒ²ÓĞºÜ¶à¸Ä½ø¿Õ¼ä¡£
+// æ¯æ¬¡éƒ½èƒ½æ‰¾åˆ°æ–° bugï¼Œå¾ˆå¯èƒ½è¿˜æœ‰ä¸€äº› bugã€‚
+// åŒæ—¶é€Ÿåº¦ä¸Šä¹Ÿæœ‰å¾ˆå¤šæ”¹è¿›ç©ºé—´ã€‚
 
 Var::Var(double num) : num(num) { typ = L"num"; }
 Var::Var(wstring const& str) : str(str) { typ = L"str"; }
@@ -33,8 +33,8 @@ ptr<Var> findvar(Scope& sc, wstring nm) {
 }
 bool default_fun(Scope& sc, expr const& ex, Var& out) {
 	auto const& f = ex.fun;
-	// ÏÂÃæÓÃºê¶ø²»ÊÇÔÚÔËËãÖ®Ç° Eval ÊÇÎªÁËËÙ¶È£¬²âÊÔ·¢ÏÖĞèÒªÕâÑù¡£
-	// ²»ÖªµÀÓĞÃ»ÓĞ±ğµÄÌæ´ú·½·¨¡£
+	// ä¸‹é¢ç”¨å®è€Œä¸æ˜¯åœ¨è¿ç®—ä¹‹å‰ Eval æ˜¯ä¸ºäº†é€Ÿåº¦ï¼Œæµ‹è¯•å‘ç°éœ€è¦è¿™æ ·ã€‚
+	// ä¸çŸ¥é“æœ‰æ²¡æœ‰åˆ«çš„æ›¿ä»£æ–¹æ³•ã€‚
 #define d0 eval(sc, ex.pars[0])->num
 #define d1 eval(sc, ex.pars[1])->num
 #define s0 eval(sc, ex.pars[0])->str

@@ -1,4 +1,4 @@
-#include "droplist.h"
+ï»¿#include "droplist.h"
 #include "app.h"
 #include "draw_geo.h"
 #include "draw_str.h"
@@ -6,7 +6,7 @@
 
 #include "ctrl_def.h"
 
-wstring nm_none(int id) { return L"¿Õ"; }
+wstring nm_none(int id) { return L"ç©º"; }
 Droplist::Droplist(int w) : w(w) {
 	gap = { 10, 10 }; dep = 1000;
 	h_item = 25; h = 30;

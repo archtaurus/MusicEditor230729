@@ -1,4 +1,4 @@
-#include "vec2.h"
+ï»¿#include "vec2.h"
 
 vec2 vec2::from_str(wstring const& s) {
 	vec2 v; int i = 0;
@@ -15,7 +15,7 @@ bool insd(vec2 v, rect r) {
 		insd(v.y, r.top(), r.bottom());
 }
 
-// ²»ÖªµÀÄÜ²»ÄÜÓÅ»¯£¬Í¬Ê±¶ş´ÎºÍÈı´ÎÓ¦¸ÃÓĞµ¥¶ÀµÄÊµÏÖ¡£
+// ä¸çŸ¥é“èƒ½ä¸èƒ½ä¼˜åŒ–ï¼ŒåŒæ—¶äºŒæ¬¡å’Œä¸‰æ¬¡åº”è¯¥æœ‰å•ç‹¬çš„å®ç°ã€‚
 vec2 bezier(vector<vec2> ps, double t) {
 	if (ps.size() == 2) { return ps[0] * (1 - t) + ps[1] * t; }
 	vector<vec2> ps0, ps1;
@@ -25,7 +25,7 @@ vec2 bezier(vector<vec2> ps, double t) {
 	}
 	return bezier(ps0, t) * (1 - t) + bezier(ps1, t) * t;
 }
-// ÕâÀïµÄ¹«Ê½ÎÒ²»ÄÜÊìÁ·µÄÍÆ³öÀ´¡£
+// è¿™é‡Œçš„å…¬å¼æˆ‘ä¸èƒ½ç†Ÿç»ƒçš„æ¨å‡ºæ¥ã€‚
 double dist_sqr(vec2 a, vec2 b, vec2 p) {
 	if (a == b) { return (a - p).lensqr(); }
 	double ap = (p - a).lensqr();

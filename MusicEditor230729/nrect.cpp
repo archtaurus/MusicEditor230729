@@ -1,4 +1,4 @@
-#include "nrect.h"
+ï»¿#include "nrect.h"
 #include "cur.h"
 #include "bgr.h"
 #include "track.h"
@@ -35,9 +35,9 @@ bool NRect::rect_seled(Cur& cur) const {
 	return bgr.rect_sel && insd({ sdx(t0), sdy(tone) }, rc);
 }
 bool NRect::overlapped(Cur& cur) const {
-	// ²»ÖªµÀ¸ãÕâÃ´¶àÓÅ»¯ÓÐÃ»ÓÐÓÃ¡£
+	// ä¸çŸ¥é“æžè¿™ä¹ˆå¤šä¼˜åŒ–æœ‰æ²¡æœ‰ç”¨ã€‚
 	if (t0 > sdbx(vpsht.right()) || t1 < sdbx(vpsht.left())) { return false; }
-	// Ä¬ÈÏÁËËùÔÚÒô¹ìÊÇ±»Ñ¡ÖÐµÄ¡£2 ÊÇËæ±ãµÄÒ»¸öÊý×Ö¡£
+	// é»˜è®¤äº†æ‰€åœ¨éŸ³è½¨æ˜¯è¢«é€‰ä¸­çš„ã€‚2 æ˜¯éšä¾¿çš„ä¸€ä¸ªæ•°å­—ã€‚
 	int a = max<int>(0, floor(t0 / nbt) - 2);
 	int b = min<int>(ceil(t1 / nbt) + 2, tksel.sht.size());
 	rep(i, a, b) for (auto nr : tksel.sht[i]) if (&*nr != this)

@@ -1,4 +1,4 @@
-#include "fpn_fun.h"
+ï»¿#include "fpn_fun.h"
 #include "ui.h"
 #include "cur.h"
 #include "draw_geo.h"
@@ -17,7 +17,7 @@ OtFun::OtFun() {
 	c_hovered = { 40, 40, 80 };
 	c_fun = { 255, 255, 255 };
 
-	// ±¾À´Ó¦¸Ã·ÅÔÚ init ÀïµÄ£¬µ«ÎªÁËÊ¡ÊÂ·ÅÕâ¡£
+	// æœ¬æ¥åº”è¯¥æ”¾åœ¨ init é‡Œçš„ï¼Œä½†ä¸ºäº†çœäº‹æ”¾è¿™ã€‚
 	ys.resize(w - 2 * ingap.x);
 }
 int OtFun::GetW() const { return w + gap.x; }

@@ -1,4 +1,4 @@
-#include "label.h"
+﻿#include "label.h"
 #include "app.h"
 #include "draw_str.h"
 
@@ -7,7 +7,7 @@
 Label::Label(bool big) {
 	gap = { 10, 10 }; dep = 1000;
 	h = big ? 30 : 20;
-	c_txt = { 255, 255, 255 }; txt = L"�ı�";
+	c_txt = { 255, 255, 255 }; txt = L"文本";
 }
 int Label::GetW() const { return w + gap.x; }
 int Label::GetH() const { return h + gap.y; }

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "tile.h"
 
 struct App;
@@ -15,7 +15,7 @@ struct Panel {
 	drect vp_show_raw_rel;
 	dcol c_frame, c_panel;
 
-	// ctrl_comp ÀïÃæÓÃ ptr£¬ÕâÀïÎªÁËÍ³Ò»Ò²ÓÃ ptr¡£
+	// ctrl_comp ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ptrï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Í³Ò»Ò²ï¿½ï¿½ ptrï¿½ï¿½
 	bool use_sb = false;
 	ptr<ScrollbarY> sb;
 
@@ -30,7 +30,7 @@ struct Panel {
 
 	int min_y() const;
 	drect vp_show() const;
-	// ²»ÓÃ delegate Ö÷ÒªÊÇÏ£ÍûÄÜÖØÖÃ¹ö¶¯¡£
+	// ï¿½ï¿½ï¿½ï¿½ delegate ï¿½ï¿½Òªï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ï¿½ï¿½
 	void set_c(App &app, Control* _c);
 	void init_c();
 	void init_sb();
@@ -38,7 +38,7 @@ struct Panel {
 
 	void Init();
 	virtual void Update(App& app);
-	// Èç¹ûÓĞ¿ÉÉ¾³ıµÄ Panel ¾ÍÓÃÕâ¸ö¡£
+	// ï¿½ï¿½ï¿½ï¿½Ğ¿ï¿½É¾ï¿½ï¿½ï¿½ï¿½ Panel ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	virtual void Discard(App& app);
 	virtual void PreUpdate(App& app);
 };

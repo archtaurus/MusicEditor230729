@@ -1,0 +1,35 @@
+CompileFlags:
+  Add:
+    - -std=c++17
+    - -DWIN32
+    - -D_WINDOWS
+    - -D_UNICODE
+    - -DUNICODE
+    - -D_WIN32_WINNT=0x0A00
+    - -target
+    - x86_64-w64-windows-gnu
+    - -I.
+    - -IC:/Program Files/RedPanda-Cpp/mingw64/x86_64-w64-mingw32/include
+    - -IC:/Program Files/RedPanda-Cpp/mingw64/lib/gcc/x86_64-w64-mingw32/11.5.0/include
+    - -IC:/Program Files/RedPanda-Cpp/mingw64/lib/gcc/x86_64-w64-mingw32/11.5.0/include/c++
+    - -IC:/Program Files/RedPanda-Cpp/mingw64/lib/gcc/x86_64-w64-mingw32/11.5.0/include/c++/x86_64-w64-mingw32
+    - -fms-extensions
+    - -fms-compatibility
+    - -m64
+    - -D__GNUC__=11
+    - -D__GNUC_MINOR__=5
+    - -D__GNUC_PATCHLEVEL__=0
+  Remove:
+    - -W*
+
+Diagnostics:
+  Suppress:
+    - pp_file_not_found
+    - fatal_too_many_errors
+    - invalid_token_after_toplevel_declarator
+    - unknown_typename
+    - undeclared_var_use
+  UnusedIncludes: None
+
+Index:
+  Background: Build

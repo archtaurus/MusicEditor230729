@@ -1,4 +1,4 @@
-#include "font.h"
+﻿#include "font.h"
 
 font::font() : font(20) {}
 font::font(int h) : h(h) {}
@@ -14,11 +14,13 @@ wstring font::rnd(int n) const {
 bool font::load_font(wstring const& name, wchar_t c) {
 	wstring path = L"./fonts/" + name + L".tile";
 	bool ret = false; tile t0 (path, &ret);
+
 	if (ret) {
 		tile t1 = tile(t0.w * h / t0.h, h, t0, t0.rect());
 		fts[c] = t1; return true;
 	} else { return false; }
 }
+
 bool font::init() {
 	wstring sym = (wstring)NUMBERS + NORMAL_SYMBOLS + LOWERS;
 	wstring upp = (wstring)UPPERS;

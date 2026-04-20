@@ -1,4 +1,4 @@
-#include "complex.h"
+﻿#include "complex.h"
 
 void fft(vector<complex>& cs, int a, int n) {
 	if (n == 1) { return; }

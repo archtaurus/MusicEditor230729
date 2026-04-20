@@ -1,4 +1,4 @@
-#include "filter.h"
+﻿#include "filter.h"
 #include "var.h"
 #include "cur.h"
 #include "inst.h"
@@ -6,26 +6,26 @@
 #define sp (cur.wv.sp)
 
 Filter::Filter(Cur& cur, Var const& v) {
-#define find(nm) v.dic.find(L#nm) != v.dic.end()
+#define find(nm) v.dic.find(std::wstring(L ## #nm)) != v.dic.end()
 
-#define get(nm) if(find(nm)) { nm = v.dic.at(L#nm)->num; }
+#define get(nm) if(find(nm)) { nm = v.dic.at(std::wstring(L ## #nm))->num; }
 	get(type);
 #undef get
 
-#define get(nm) if(find(nm)) { nm = Num(cur, *v.dic.at(L#nm)); }
+#define get(nm) if(find(nm)) { nm = Num(cur, *v.dic.at(std::wstring(L ## #nm))); }
 	get(freq); get(resonance);
 #undef get
 
 #undef find
 }
 Filter::Filter(Cur& cur, Inst& inst, Var const& v) {
-#define find(nm) v.dic.find(L#nm) != v.dic.end()
+#define find(nm) v.dic.find(std::wstring(L ## #nm)) != v.dic.end()
 
-#define get(nm) if(find(nm)) { nm = v.dic.at(L#nm)->num; }
+#define get(nm) if(find(nm)) { nm = v.dic.at(std::wstring(L ## #nm))->num; }
 	get(type);
 #undef get
 	
-#define get(nm) if(find(nm)) { nm = Num(cur, inst, *v.dic.at(L#nm)); }
+#define get(nm) if(find(nm)) { nm = Num(cur, inst, *v.dic.at(std::wstring(L ## #nm))); }
 	get(freq); get(resonance);
 #undef get
 

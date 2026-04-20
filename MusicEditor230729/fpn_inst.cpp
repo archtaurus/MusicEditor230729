@@ -1,4 +1,4 @@
-#include "fpn_inst.h"
+﻿#include "fpn_inst.h"
 #include "ui.h"
 #include "cur.h"
 #include "drum.h"
@@ -19,7 +19,7 @@ void BtSvDrum::OnClick(App& app) {
 		pdm->str = tksel.str;
 		pdm->Build(cur); 
 		pdm->drum_member = true;
-		// �ű������ǲ���Ԥ��ģ��������ﲻ���жϡ�
+		// 脚本语言是不可预测的，所以这里不做判断。
 	}
 }
 BtLdDrum::BtLdDrum() : BtLan(120, L"bt_ld_drum") {}

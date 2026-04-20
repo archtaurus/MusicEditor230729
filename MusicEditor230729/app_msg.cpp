@@ -1,4 +1,4 @@
-#include "app.h"
+ï»¿#include "app.h"
 
 int created(App*& app, WPARAM wp, LPARAM lp) {
 	auto pcs = (CREATESTRUCT*)lp;
@@ -47,10 +47,10 @@ int mouse_wheel(App* app, WPARAM wp, LPARAM lp) {
 	return 0;
 }
 
-// ÓĞºÜ¶àÇé¿öÒª¿¼ÂÇ£ºÈç¹ûÊó±ê±»°ÎµôÁË£¬»áÔõÃ´Ñù¡£
-// ¿ÉÄÜÒ»Ö¡Ö®ÄÚÊó±ê×öÁËºÜ¶àÊÂÇé¡£
-// ´°¿Ú×îĞ¡»¯»òÕß±»ÕÚµ²Ö®ºó£¬ÈçºÎÅĞ¶ÏÊó±êÊÇ·ñÔÚ´°¿ÚÄÚ¡£
-// ºÃÏñÊó±êÔÚ×ÀÃæÖ®ÍâµÄÊ±ºò²»»áÓĞ MOUSELEAVE ÏûÏ¢¡£
+// æœ‰å¾ˆå¤šæƒ…å†µè¦è€ƒè™‘ï¼šå¦‚æœé¼ æ ‡è¢«æ‹”æ‰äº†ï¼Œä¼šæ€ä¹ˆæ ·ã€‚
+// å¯èƒ½ä¸€å¸§ä¹‹å†…é¼ æ ‡åšäº†å¾ˆå¤šäº‹æƒ…ã€‚
+// çª—å£æœ€å°åŒ–æˆ–è€…è¢«é®æŒ¡ä¹‹åï¼Œå¦‚ä½•åˆ¤æ–­é¼ æ ‡æ˜¯å¦åœ¨çª—å£å†…ã€‚
+// å¥½åƒé¼ æ ‡åœ¨æ¡Œé¢ä¹‹å¤–çš„æ—¶å€™ä¸ä¼šæœ‰ MOUSELEAVE æ¶ˆæ¯ã€‚
 int mouse_leave(App* app, WPARAM wp, LPARAM lp) {
 	app->in.mouse_owned = false;
 	app->in.mouse_tracked = false;
@@ -90,8 +90,8 @@ int right_mouse_down(App* app, WPARAM wp, LPARAM lp) {
 	return 0;
 }
 
-// ÎÒ¸ã²»Çå³şÊ²Ã´ÊÇ capture changed¡£
-// Êµ¼ÊÖĞ·¢ÏÖÔÚµã»÷±êÌâÀ¸µÄÊ±ºò»áÓĞÕâ¸öÏûÏ¢¡£
+// æˆ‘æä¸æ¸…æ¥šä»€ä¹ˆæ˜¯ capture changedã€‚
+// å®é™…ä¸­å‘ç°åœ¨ç‚¹å‡»æ ‡é¢˜æ çš„æ—¶å€™ä¼šæœ‰è¿™ä¸ªæ¶ˆæ¯ã€‚
 LRESULT CALLBACK wnd_proc(HWND wnd, UINT msg, WPARAM wp, LPARAM lp) {
 	static App* app = NULL;
 	switch (msg) {

@@ -1,4 +1,4 @@
-#include "inst.h"
+ï»¿#include "inst.h"
 #include "cur.h"
 #include "osc.h"
 #include "env.h"
@@ -8,35 +8,35 @@
 #define sp (cur.wv.sp)
 
 Inst::Inst(Cur &cur) {
-#define find(nm) sc.find(L#nm) != sc.end()
+#define find(nm) sc.find(std::wstring(L ## #nm)) != sc.end()
 
-#define get(nm) if(find(nm)) { nm = Num(cur, *this, *sc.at(L#nm)); }
+#define get(nm) if(find(nm)) { nm = Num(cur, *this, *sc.at(std::wstring(L ## #nm))); }
 	get(vol);
 #undef get
 
-#define get(nm) if (find(nm)) { nm = sc.at(L#nm)->num; }
+#define get(nm) if (find(nm)) { nm = sc.at(std::wstring(L ## #nm))->num; }
 	get(fixed_tone);
 #undef get
 
 	if (find(lfo)) {
-		auto& vs = sc[L"lfo"]->vec;
+		auto& vs = sc[std::wstring(L"lfo")]->vec;
 		for (auto v : vs) { lfos.push_back(msh<LFO>(cur, *this, *v)); }
 	}
 	if (find(env)) {
-		auto& vs = sc[L"env"]->vec;
+		auto& vs = sc[std::wstring(L"env")]->vec;
 		for (auto v : vs) { envs.push_back(msh<Env>(cur, *this, *v)); }
 	}
 	if (find(osc)) {
-		auto& vs = sc[L"osc"]->vec;
+		auto& vs = sc[std::wstring(L"osc")]->vec;
 		for (auto v : vs) { oscs.push_back(msh<Osc>(cur, *this, *v)); }
 	}
 
-	// ÀÁµÃÔÙÈ¥¿¼ÂÇÖ÷ÒôÁ¿ÁË¡£
+	// æ‡’å¾—å†å»è€ƒè™‘ä¸»éŸ³é‡äº†ã€‚
 	for (auto osc : oscs) if (osc->vol.type == TYP_ENV) 
 	if (osc->vol.id < envs.size()) {
 		auto& r = envs[osc->vol.id]->release;
 		t_end_rel = max(t_end_rel, r.type == TYP_NUM ? r.num : r.a + r.b);
-		// ÕâÀïÒşº¬ÁË a ±ØĞëÎªÕıÊı¡£
+		// è¿™é‡Œéšå«äº† a å¿…é¡»ä¸ºæ­£æ•°ã€‚
 	}
 #undef find
 }

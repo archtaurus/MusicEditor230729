@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "font.h"
 #include "control.h"
 
@@ -10,7 +10,7 @@ struct Textbox : Control {
 	dcol c_txt, c_edit, c_frame, c_normal,
 		c_cursor, c_hovered, c_invalid, c_selected;
 
-	// Ò²ÊÇ x_str_rel µÄÁãÖµ£¬·ñÔòÒ»¿ªÊ¼±à¼­ÎÄ×ÖµÄÎ»ÖÃ¾Í»á±ä»¯¡£
+	// Ò²ï¿½ï¿½ x_str_rel ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼ï¿½à¼­ï¿½ï¿½ï¿½Öµï¿½Î»ï¿½Ã¾Í»ï¿½ä»¯ï¿½ï¿½
 	int w_edit_margin = 0;
 	int w_show_txt_margin = 0;
 	double slide_mtp = 0;

@@ -1,4 +1,4 @@
-#include "track.h"
+ï»¿#include "track.h"
 #include "fx.h"
 #include "cur.h"
 #include "var.h"
@@ -12,7 +12,7 @@ Track::Track(wstring const& nm) : nm(nm) { mkp(inst)(); }
 #include "my_def.h"
 #define nbt (cur.n_beat)
 
-// ÀíÏëµÄÊÇ°Ñ Track, Singer, Inst, DrumMachine ·Ö¿ª¡£
+// ç†æƒ³çš„æ˜¯æŠŠ Track, Singer, Inst, DrumMachine åˆ†å¼€ã€‚
 void Track::save(FILE* f) const {
 	int sz = 0; fwtv(nm); fwtv(str); 
 	sz = 0; for (auto& a : sht) { sz += a.size(); } fwt(sz);
@@ -101,20 +101,20 @@ void Track::Build(Cur& cur) {
 	
 	
 
-#define find(nm) sc.find(L#nm) != sc.end()
+#define find(nm) sc.find(std::wstring(L ## #nm)) != sc.end()
 	if (find(fx)) {
-		auto& vs = sc[L"fx"]->vec;
+		auto& vs = sc[std::wstring(L"fx")]->vec;
 		for (auto v : vs) { 
 			fxs.push_back(msh<FX>(cur, *v)); 
 			pfxs.push_back(msh<FX>(cur, *v));
 		}
 	} 
-#define get(nm) if(find(nm)) { nm = sc.at(L#nm)->num; }
+#define get(nm) if(find(nm)) { nm = sc.at(std::wstring(L ## #nm))->num; }
 	get(drum);
 #undef get
 	if (drum && !cur.tkdm) { 
 		cur.tkdm = this;
-		if (find(vol)) { cur.dm->vol = Num(cur, *sc.at(L"vol")); }
+		if (find(vol)) { cur.dm->vol = Num(cur, *sc.at(std::wstring(L"vol"))); }
 	}
 
 #undef find

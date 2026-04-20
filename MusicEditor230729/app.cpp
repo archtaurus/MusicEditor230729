@@ -1,30 +1,46 @@
-#include "app.h"
+ï»¿#include "app.h"
 #include "tile.h"
 
 App::App() {
 	w = 800; h = 600;
-	title = L"³ÌĞò"; class_name = L"class";
+	title = L"ç¨‹åº"; class_name = L"class";
 }
 void App::Init() {
-	addlog(L"¿ªÊ¼¼ÓÔØ³ÌĞò.\n");
+	addlog(L"å¼€å§‹åŠ è½½ç¨‹åº.\n");
 	set_locale(); scr = tile(w, h);
 	dscr = ini_dscr = dbuf(w * h, -DBL_MAX);
 	bool ret = ft.init();
-	addlog(ret ? L"³É¹¦¼ÓÔØ×ÖÌåÄ£¿é.\n" : L"¼ÓÔØ×ÖÌåÄ£¿éÊ§°Ü.\n");
+	addlog(ret ? L"æˆåŠŸåŠ è½½å­—ä½“æ¨¡å—.\n" : L"åŠ è½½å­—ä½“æ¨¡å—å¤±è´¥.\n");
 
-	HRESULT hr = SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
-	addlog(hr == S_OK ? L"³É¹¦ÉèÖÃ DPI ¸ĞÖª.\n" : L"ÉèÖÃ DPI ¸ĞÖªÊ§°Ü.\n");
+	// å°è¯•ä½¿ç”¨ SetProcessDpiAwareness (Windows 8.1+)
+	HRESULT hr = E_FAIL;
+	// æ£€æŸ¥å‡½æ•°æ˜¯å¦å¯ç”¨
+	HMODULE hShcore = LoadLibraryW(L"Shcore.dll");
+	if (hShcore) {
+		typedef HRESULT (WINAPI *SetProcessDpiAwarenessProc)(PROCESS_DPI_AWARENESS);
+		auto pSetProcessDpiAwareness = (SetProcessDpiAwarenessProc)GetProcAddress(hShcore, "SetProcessDpiAwareness");
+		if (pSetProcessDpiAwareness) {
+			hr = pSetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
+		}
+		FreeLibrary(hShcore);
+	}
+	// å¦‚æœå¤±è´¥ï¼Œå›é€€åˆ° SetProcessDPIAware (Windows Vista+)
+	if (FAILED(hr)) {
+		SetProcessDPIAware();
+		hr = S_OK; // å‡è®¾æˆåŠŸ
+	}
+	addlog(hr == S_OK ? L"æˆåŠŸè®¾ç½® DPI æ„ŸçŸ¥.\n" : L"è®¾ç½® DPI æ„ŸçŸ¥å¤±è´¥.\n");
 	hinst = GetModuleHandle(NULL);
-	addlog(hinst ? L"³É¹¦È¡µÃÄ£¿é¾ä±ú.\n" : L"È¡µÃÄ£¿é¾ä±úÊ§°Ü.\n");
+	addlog(hinst ? L"æˆåŠŸå–å¾—æ¨¡å—å¥æŸ„.\n" : L"å–å¾—æ¨¡å—å¥æŸ„å¤±è´¥.\n");
 
 	register_window_class(); create_window(); ret = wv.init();
-	addlog(ret ? L"³É¹¦¼ÓÔØÉùÒôÄ£¿é.\n" : L"¼ÓÔØÉùÒôÄ£¿éÊ§°Ü.\n");
+	addlog(ret ? L"æˆåŠŸåŠ è½½å£°éŸ³æ¨¡å—.\n" : L"åŠ è½½å£°éŸ³æ¨¡å—å¤±è´¥.\n");
 	in.init(hwnd); init_bmi(); load_localization();
 
 	hdc = GetDC(hwnd);
-	addlog(hdc ? L"³É¹¦È¡µÃÉè±¸»·¾³¾ä±ú.\n" : L"È¡µÃÉè±¸»·¾³¾ä±úÊ§°Ü.\n");
+	addlog(hdc ? L"æˆåŠŸå–å¾—è®¾å¤‡ç¯å¢ƒå¥æŸ„.\n" : L"å–å¾—è®¾å¤‡ç¯å¢ƒå¥æŸ„å¤±è´¥.\n");
 	sys_hcs = LoadCursorW(NULL, IDC_ARROW);
-	addlog(sys_hcs ? L"³É¹¦¼ÓÔØ¹â±ê.\n" : L"¼ÓÔØ¹â±êÊ§°Ü.\n");
+	addlog(sys_hcs ? L"æˆåŠŸåŠ è½½å…‰æ ‡.\n" : L"åŠ è½½å…‰æ ‡å¤±è´¥.\n");
 }
 void App::Run(bool console) {
 	if (!console) { hide_console(); }
@@ -37,16 +53,16 @@ void App::Run(bool console) {
 			DispatchMessageW(&msg);
 		} else {
 			bool ret = SetWindowText(hwnd, title.c_str());
-			if (!ret) { addlog(L"ÉèÖÃ±êÌâÊ§°Ü.\n"); }
+			if (!ret) { addlog(L"è®¾ç½®æ ‡é¢˜å¤±è´¥.\n"); }
 			fps.update(); reset_dscr();
 			ret = in.sync_mouse(hwnd);
-			if (!ret) { addlog(L"Í¬²½Êó±êÎ»ÖÃÊ§°Ü.\n"); }
+			if (!ret) { addlog(L"åŒæ­¥é¼ æ ‡ä½ç½®å¤±è´¥.\n"); }
 			Update(); ret = wv.play();
-			if (!ret) { addlog(L"²¥·ÅÉùÒôÊ§°Ü.\n"); }
+			if (!ret) { addlog(L"æ’­æ”¾å£°éŸ³å¤±è´¥.\n"); }
 			present_scr(); in.reset(); own.reset();
 		}
 	} ReleaseDC(hwnd, hdc); 
-	wv.exit(); addlog(L"ÍË³ö³ÌĞò.\n\n");
+	wv.exit(); addlog(L"é€€å‡ºç¨‹åº.\n\n");
 }
 
 void App::reset_dscr() {
@@ -55,11 +71,11 @@ void App::reset_dscr() {
 void App::present_scr() {
 	int ret = SetDIBitsToDevice(hdc, 0, 0, w, h, 
 		0, 0, 0, h, scr.cols.data(), &bmi, DIB_RGB_COLORS);
-	if (!ret) { addlog(L"Õ¹Ê¾ÆÁÄ»Ê§°Ü.\n"); }
+	if (!ret) { addlog(L"å±•ç¤ºå±å¹•å¤±è´¥.\n"); }
 }
 void App::addlog(wstring const& s) {
-	FILE* f_log = wfopen(L"ÔËĞĞ¼ÇÂ¼.log", L"a");
-	if (!f_log) { print_console(L"ÔËĞĞ¼ÇÂ¼´ò¿ªÊ§°Ü¡£", true); }
+	FILE* f_log = wfopen(L"è¿è¡Œè®°å½•.log", L"a");
+	if (!f_log) { print_console(L"è¿è¡Œè®°å½•æ‰“å¼€å¤±è´¥ã€‚", true); }
 	else { fwprintf(f_log, s.c_str()); fclose(f_log); }
 }
 wstring App::loc(wstring const& id) const {
@@ -80,13 +96,42 @@ void App::init_bmi() {
 	bmi.bmiHeader = hd;
 }
 void App::load_localization() {
-	FILE* f = wfopen(L"localization.txt", L"r");
+	FILE* f = wfopen(L"localization.txt", L"rb");
 	if (!f) { return; }
 
+	// è·å–æ–‡ä»¶å¤§å°
+	fseek(f, 0, SEEK_END);
+	long fsize = ftell(f);
+	fseek(f, 0, SEEK_SET);
+
+	// è¯»å–åŸå§‹å­—èŠ‚
+	vector<char> buffer(fsize + 1);
+	size_t read = fread(buffer.data(), 1, fsize, f);
+	fclose(f);
+	if (read != (size_t)fsize) { return; }
+	buffer[fsize] = 0;
+
+	// æ£€æµ‹UTF-8 BOM (å¯é€‰)
+	char* data = buffer.data();
+	int size = fsize;
+	if (fsize >= 3 && (unsigned char)data[0] == 0xEF && (unsigned char)data[1] == 0xBB && (unsigned char)data[2] == 0xBF) {
+		data += 3;
+		size -= 3;
+	}
+
+	// è½¬æ¢UTF-8åˆ°å®½å­—ç¬¦
+	int wlen = MultiByteToWideChar(CP_UTF8, 0, data, size, NULL, 0);
+	if (wlen <= 0) { return; }
+	vector<wchar_t> wbuf(wlen + 1);
+	MultiByteToWideChar(CP_UTF8, 0, data, size, wbuf.data(), wlen);
+	wbuf[wlen] = 0;
+
+	// è§£æå®½å­—ç¬¦æµ
 	bool dollar = false;
 	wstringstream s; wstring id;
-	vector<wstring> strs; wchar_t c = getwc(f);
-	while (c != WEOF) {
+	vector<wstring> strs;
+	for (int i = 0; i < wlen; ++i) {
+		wchar_t c = wbuf[i];
 		if (c == L'$') {
 			if (dollar) { 
 				strs.push_back(s.str()); s = wstringstream(); 
@@ -97,8 +142,9 @@ void App::load_localization() {
 			if (!strs.empty()) { 
 				dict[id] = strs; strs.clear(); id.clear();
 			} id += c;
-		}  c = getwc(f);
-	} if (!strs.empty()) { dict[id] = strs; } fclose(f);
+		}
+	}
+	if (!strs.empty()) { dict[id] = strs; }
 }
 void App::register_window_class() {
 	WNDCLASSEXW wc{};
@@ -108,17 +154,17 @@ void App::register_window_class() {
 	wc.lpszClassName = class_name.c_str();
 
 	ATOM ret = RegisterClassExW(&wc);
-	addlog(ret ? L"³É¹¦×¢²á´°¿ÚÀà.\n" : L"×¢²á´°¿ÚÀàÊ§°Ü.\n");
+	addlog(ret ? L"æˆåŠŸæ³¨å†Œçª—å£ç±».\n" : L"æ³¨å†Œçª—å£ç±»å¤±è´¥.\n");
 }
 void App::create_window() {
 	RECT cr{}; cr.right = w; cr.bottom = h;
 	DWORD sty = WS_SYSMENU | WS_CAPTION;
 	BOOL ret = AdjustWindowRect(&cr, sty, FALSE);
-	addlog(ret ? L"³É¹¦µ÷Õû´°¿Ú¾ØĞÎ.\n" : L"µ÷Õû´°¿Ú¾ØĞÎÊ§°Ü.\n");
+	addlog(ret ? L"æˆåŠŸè°ƒæ•´çª—å£çŸ©å½¢.\n" : L"è°ƒæ•´çª—å£çŸ©å½¢å¤±è´¥.\n");
 	int rw = cr.right - cr.left;
 	int rh = cr.bottom - cr.top;
 
 	hwnd = CreateWindowExW(0, class_name.c_str(), 
 		title.c_str(), sty, 0, 0, rw, rh, NULL, NULL, hinst, this);
-	addlog(hwnd ? L"³É¹¦´´½¨´°¿Ú.\n" : L"´´½¨´°¿ÚÊ§°Ü.\n");
+	addlog(hwnd ? L"æˆåŠŸåˆ›å»ºçª—å£.\n" : L"åˆ›å»ºçª—å£å¤±è´¥.\n");
 }

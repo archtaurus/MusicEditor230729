@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 #include "vec2.h"
 #include "tile.h"
 
-// ÕâÀï vp_dest ÔÊĞíÆæÒì£¬µ«ÊÇ vp_src ²»ÔÊĞíÆæÒì¡£
+// ï¿½ï¿½ï¿½ï¿½ vp_dest ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì£¬ï¿½ï¿½ï¿½ï¿½ vp_src ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì¡£
 void draw_tile_raw
 (tile& dest, dvec tl, drect vp_dest, tile const& src, drect vp_src);
 void draw_tile(tile& dest, dbuf& ds, double dep, dvec tl,

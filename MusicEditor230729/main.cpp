@@ -1,4 +1,4 @@
-#include "cur.h"
+﻿#include "cur.h"
 
 int main() {
 	Cur().Run();

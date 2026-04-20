@@ -1,4 +1,4 @@
-#include "reverb.h"
+ï»¿#include "reverb.h"
 #include "cur.h"
 #include "var.h"
 #include "filter.h"
@@ -40,14 +40,14 @@ Reverb::Reverb(Cur& cur, Var const& v) {
 	double ta0 = 0.09683;
 	double ta1 = 0.03292;
 
-#define find(nm) v.dic.find(L#nm) != v.dic.end()
-#define get(nm) if(find(nm)) { nm = Num(cur, *v.dic.at(L#nm)); }
+#define find(nm) v.dic.find(std::wstring(L ## #nm)) != v.dic.end()
+#define get(nm) if(find(nm)) { nm = Num(cur, *v.dic.at(std::wstring(L ## #nm))); }
 	get(wet); get(gc0); get(gc1); get(gc2); get(gc3);
 	get(ga0); get(ga1);
 #undef get
 
 	if (find(filter)) {
-		auto& vs = v.dic.at(L"filter")->vec;
+		auto& vs = v.dic.at(std::wstring(L"filter"))->vec;
 		for (auto v : vs) { fs.push_back(msh<Filter>(cur, *v)); }
 	}
 
@@ -74,7 +74,7 @@ double Reverb::loop(Cur& cur, double in) {
 		c1.loop(in, gc1.val(cur)) +
 		c2.loop(in, gc2.val(cur)) +
 		c3.loop(in, gc3.val(cur));
-	// ²»ÖªµÀÒª²»Òª³ýÒÔ 4£¬ÎÒ×Ô×÷Ö÷ÕÅ¼ÓµÄ¡£
+	// ä¸çŸ¥é“è¦ä¸è¦é™¤ä»¥ 4ï¼Œæˆ‘è‡ªä½œä¸»å¼ åŠ çš„ã€‚
 	out = a0.loop(out, ga0.val(cur));
 	out = a1.loop(out, ga1.val(cur));
 	for (auto f : fs) { out = f->loop(cur, out); }

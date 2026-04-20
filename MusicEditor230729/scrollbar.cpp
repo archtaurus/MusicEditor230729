@@ -1,4 +1,4 @@
-#include "scrollbar.h"
+ï»¿#include "scrollbar.h"
 #include "app.h"
 #include "control.h"
 #include "draw_comp.h"
@@ -31,7 +31,7 @@ void ScrollbarY::Update(App& app) {
 	hovered = (hvd == this);
 	hovered_node = hovered && insd(msp, { tl + dvec(0, ny_rel), w, nh });
 
-	// Õâ¸ö×´Ì¬±ä»¯±ÈÒ»°ãµÄ¿Ø¼şÊÇÒª¸´ÔÓµÄ¡£
+	// è¿™ä¸ªçŠ¶æ€å˜åŒ–æ¯”ä¸€èˆ¬çš„æ§ä»¶æ˜¯è¦å¤æ‚çš„ã€‚
 	if (full) {
 		nh = h_show * h / c->GetH();
 		if (dragged) {

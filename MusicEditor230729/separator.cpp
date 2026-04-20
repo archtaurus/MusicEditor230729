@@ -1,4 +1,4 @@
-#include "separator.h"
+ï»¿#include "separator.h"
 #include "app.h"
 #include "draw_geo.h"
 
@@ -12,7 +12,7 @@ int SeparatorY::GetW() const { return w + gap.x; }
 int SeparatorY::GetH() const { return 1 + gap.y; }
 
 void SeparatorY::render(App &app) {
-	// ËäÈ» dep Ã»Ê²Ã´ÓÃ£¬µ«³öÓÚÏ°¹ß»¹ÊÇ±£ÁôÁË¡£
+	// è™½ç„¶ dep æ²¡ä»€ä¹ˆç”¨ï¼Œä½†å‡ºäºä¹ æƒ¯è¿˜æ˜¯ä¿ç•™äº†ã€‚
 	draw_rect_raw(scr, tl, w, 1, vp, c_mark);
 }
 void SeparatorY::Update(App &app) { render(app); }

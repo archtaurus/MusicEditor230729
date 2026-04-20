@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "utils.h"
 
 struct dvec {
@@ -46,5 +46,5 @@ struct drect {
 	dvec ct() const { return tl + dvec(w, h) / 2; }
 };
 bool insd(dvec v, drect r);
-// ÕâÀï¿ÉÄÜ»á³öÏÖ¸ºµÄ drect¡£
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü»ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ drectï¿½ï¿½
 drect overlap(drect a, drect b);

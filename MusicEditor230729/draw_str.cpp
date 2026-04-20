@@ -1,4 +1,4 @@
-#include "draw_str.h"
+ï»¿#include "draw_str.h"
 #include "font.h"
 
 void draw_char(tile& dest, dbuf& ds, double dep,
@@ -48,7 +48,7 @@ dvec str_wh(wstring const& s, font const& ft, int w, int* x_last) {
 				w_out = max(w_out, x_cur);
 				h_out += ft.h; x_cur = 0;
 			}
-			// ÏÂÃæÁ½¸öË³Ğò¿É±ğÂÒ¶¯°¡¡£
+			// ä¸‹é¢ä¸¤ä¸ªé¡ºåºå¯åˆ«ä¹±åŠ¨å•Šã€‚
 			x_cur += t.w; w_out = max(w_out, x_cur);
 		}
 	} if (x_last) { *x_last = x_cur; } 

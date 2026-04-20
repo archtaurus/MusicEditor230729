@@ -1,4 +1,4 @@
-#include "textbox.h"
+ï»¿#include "textbox.h"
 #include "app.h"
 #include "draw_geo.h"
 #include "draw_str.h"
@@ -56,7 +56,7 @@ int Textbox::x_cursor_rel(App &app) const {
 	wstring tmp(str.begin(), str.begin() + edit_b);
 	return x_str_rel + str_wh(tmp, ft, 0).x;
 }
-// ÏÂÃæÊÇ¶ÔµÄ£¬²»ĞèÒª¼ÓÒ»¼õÒ»Ê²Ã´µÄ¡£
+// ä¸‹é¢æ˜¯å¯¹çš„ï¼Œä¸éœ€è¦åŠ ä¸€å‡ä¸€ä»€ä¹ˆçš„ã€‚
 int Textbox::max_x_cursor_rel() const { return w - w_edit_margin; }
 
 void Textbox::select_a(App& app) {
@@ -89,7 +89,7 @@ void Textbox::hdl_right(App& app) {
 	cursor_change = selecting = false;
 	if (selected()) { edit_a = edit_b = edit_end(); }
 	else {
-		// ÏÂÃæ²»Òª¼õÒ»¡£
+		// ä¸‹é¢ä¸è¦å‡ä¸€ã€‚
 		if (++edit_a > str.size()) { edit_a = str.size(); }
 		edit_b = edit_a;
 	}
@@ -213,7 +213,7 @@ void Textbox::Update(App& app) {
 
 		if (enabled && !hovered && msc(0)) { OnDone(app); }
 		if (!enabled || !hovered && msc(0)) {
-			// Çë×¢Òâ kb_owner µÄµÇ¼ÇÔÚ PreUpdate ÖĞ½øĞĞ¡£
+			// è¯·æ³¨æ„ kb_owner çš„ç™»è®°åœ¨ PreUpdate ä¸­è¿›è¡Œã€‚
 			free_kb(this); edit = selecting = false;
 			edit_a = edit_b = 0;
 		}

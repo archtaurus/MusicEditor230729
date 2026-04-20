@@ -1,4 +1,4 @@
-#include "ui.h"
+ï»¿#include "ui.h"
 #include "cur.h"
 #include "float_panel.h"
 #include "fpn_global.h"
@@ -26,9 +26,9 @@ void UI::Init(Cur &cur) {
 	mkfp(fpn_track);
 	mkfp(fpn_inst);
 
-	// pn_menu ·ÅÔÚºóÃæÊÇÒòÎªÒªµÈ float_panel ÏÈ¼ÓÔØÍê¡£
-	// ÕâÖ÷ÒªÊÇ BtFPn µÄÔ­Òò¡£
-	// ¿ÉÒÔÓÃÄ£°åÀ´¹æ±ÜÕâ¸ö£¬µ«ÊÇÎÒ¾õµÃÌ«Âé·³ÁË¡£
+	// pn_menu æ”¾åœ¨åé¢æ˜¯å› ä¸ºè¦ç­‰ float_panel å…ˆåŠ è½½å®Œã€‚
+	// è¿™ä¸»è¦æ˜¯ BtFPn çš„åŸå› ã€‚
+	// å¯ä»¥ç”¨æ¨¡æ¿æ¥è§„é¿è¿™ä¸ªï¼Œä½†æ˜¯æˆ‘è§‰å¾—å¤ªéº»çƒ¦äº†ã€‚
 	mkp(pn_menu)(cur);
 	mkp(pn_bottom)(cur);
 }

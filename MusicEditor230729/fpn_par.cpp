@@ -1,4 +1,4 @@
-#include "fpn_par.h"
+﻿#include "fpn_par.h"
 #include "ui.h"
 #include "cur.h"
 #include "par.h"

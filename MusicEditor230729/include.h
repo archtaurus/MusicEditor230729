@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <cmath>
 #include <cstdio>
 #include <cfloat>
@@ -23,6 +23,7 @@
 #include <functional>
 #include <type_traits>
 #include <unordered_set>
+#include <memory>
 
 #ifndef UNICODE
 #define UNICODE
@@ -32,6 +33,11 @@
 #endif
 #ifndef NOMINMAX
 #define NOMINMAX
+#endif
+
+// 需要 Windows 8.1 或更高版本以支持 SetProcessDpiAwareness
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0A00  // Windows 10
 #endif
 
 #include <Windows.h>

@@ -1,4 +1,4 @@
-#include "cur.h"
+ï»¿#include "cur.h"
 #include "ui.h"
 #include "fx.h"
 #include "bgr.h"
@@ -51,15 +51,15 @@ bool keytone(BYTE key, int& tone) {
 
 Cur::Cur() {
 	w = 1800; h = 900; set_locale(); wv.n_safe = 256;
-	print_console(L"ÕıÔÚ¼ÓÔØ×ÖÌå...");
+	print_console(L"æ­£åœ¨åŠ è½½å­—ä½“...");
 	App::Init();
-	print_console(L"×ÖÌå¼ÓÔØÍê³É.", true);
-	print_console(L"ÕıÔÚ¼ÓÔØ¿Ø¼ş...");
-	// Éæ¼°µ½´«×Ô¼ºµÄÖ¸Õë£¬ËùÒÔ´´½¨Ö®ºó²»ÄÜ¸´ÖÆÁË¡£
+	print_console(L"å­—ä½“åŠ è½½å®Œæˆ.", true);
+	print_console(L"æ­£åœ¨åŠ è½½æ§ä»¶...");
+	// æ¶‰åŠåˆ°ä¼ è‡ªå·±çš„æŒ‡é’ˆï¼Œæ‰€ä»¥åˆ›å»ºä¹‹åä¸èƒ½å¤åˆ¶äº†ã€‚
 	mkp(ui)(*this); ui->Init(*this);
 	mkp(bgr)(*this); Reset();
 	mkp(ph)();
-	print_console(L"¿Ø¼ş¼ÓÔØÍê³É.", true);
+	print_console(L"æ§ä»¶åŠ è½½å®Œæˆ.", true);
 }
 
 #define cur (*this)
@@ -121,7 +121,7 @@ void Cur::Update() {
 	tksel->PreUpdate(*this);
 	basic_update();
 
-#define get(nm) if (sc.find(L#nm) != sc.end()) { nm = sc.at(L#nm)->num; }
+#define get(nm) if (sc.find(std::wstring(L ## #nm)) != sc.end()) { nm = sc.at(std::wstring(L ## #nm))->num; }
 	get(tempo); get(vol); get(transpose); get(fft_scl); get(t_stop); get(replay);
 #undef get
 
@@ -222,7 +222,7 @@ void Cur::load_par_fun(FILE* f) {
 	rep(i, 0, sz) { pars.push_back(msh<param>(f)); }
 	wstring nm; vector<double> vs; frd(sz);
 	rep(i, 0, sz) {
-		// ËäÈ»Ä¬ÈÏº¯Êı¶¼ÊÇÒ»¸ö³ß´ç£¬µ«ÎªÁËÊ¡ÊÂ»¹ÊÇ·Ö±ğ´æÉÏ³¤¶È¡£
+		// è™½ç„¶é»˜è®¤å‡½æ•°éƒ½æ˜¯ä¸€ä¸ªå°ºå¯¸ï¼Œä½†ä¸ºäº†çœäº‹è¿˜æ˜¯åˆ†åˆ«å­˜ä¸Šé•¿åº¦ã€‚
 		frdv(nm); frdv(vs);
 		funs[nm] = msh<vector<double>>(vs);
 	}
