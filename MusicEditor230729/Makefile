@@ -1,3 +1,6 @@
+# 并行编译
+MAKEFLAGS += -j6
+
 # 编译器设置
 CXX = "/c/Program Files/RedPanda-Cpp/mingw64/bin/g++.exe"
 CXXFLAGS = -I. -std=c++17 -O2 -Wall -Wextra -Wno-unknown-pragmas -Wno-misleading-indentation -Wno-conversion-null -Wno-reorder -Wno-parentheses -Wno-unused-parameter -Wno-unused-variable -Wno-sign-compare -Wno-cast-function-type -finput-charset=UTF-8 -fexec-charset=UTF-8
